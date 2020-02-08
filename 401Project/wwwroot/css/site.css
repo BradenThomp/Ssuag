@@ -7,6 +7,13 @@ a.navbar-brand {
   word-break: break-all;
 }
 
+/* hide the blue outline */
+.form-control:focus {
+    outline: 0 !important;
+    border-color: initial;
+    box-shadow: none;
+}
+
 /* Provide sufficient contrast against white background */
 a {
   color: #0366d6;
