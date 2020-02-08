@@ -32,3 +32,4 @@ G:\DOTNET_Workspace\401Project\401Project\obj\Debug\netcoreapp3.1\401Project.Vie
 G:\DOTNET_Workspace\401Project\401Project\obj\Debug\netcoreapp3.1\401Project.dll
 G:\DOTNET_Workspace\401Project\401Project\obj\Debug\netcoreapp3.1\401Project.pdb
 G:\DOTNET_Workspace\401Project\401Project\obj\Debug\netcoreapp3.1\401Project.csproj.CopyComplete
+G:\DOTNET_Workspace\401Project\401Project\obj\Debug\netcoreapp3.1\401Project.csprojAssemblyReference.cache
