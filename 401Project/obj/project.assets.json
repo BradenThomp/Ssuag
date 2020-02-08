@@ -5141,9 +5141,9 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "G:\\DOTNET_Workspace\\401Project\\401Project\\401Project.csproj",
-      "projectName": "401Project",
-      "projectPath": "G:\\DOTNET_Workspace\\401Project\\401Project\\401Project.csproj",
+      "projectUniqueName": "G:\\DOTNET_Workspace\\401Project\\401Project\\MVC.csproj",
+      "projectName": "MVC",
+      "projectPath": "G:\\DOTNET_Workspace\\401Project\\401Project\\MVC.csproj",
       "packagesPath": "C:\\Users\\Braden\\.nuget\\packages\\",
       "outputPath": "G:\\DOTNET_Workspace\\401Project\\401Project\\obj\\",
       "projectStyle": "PackageReference",
