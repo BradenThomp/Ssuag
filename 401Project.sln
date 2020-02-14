@@ -7,7 +7,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MVC", "401Project\MVC.cspro
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Comment_Microservice", "Comment_Microservice\Comment_Microservice.csproj", "{BC8B9121-A0F1-4775-A3B5-E0FC5232633C}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Post_Microservice", "Post_Microservice\Post_Microservice.csproj", "{0AB55679-EBAD-497D-90E8-0F731225BBEF}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Post_Microservice", "Post_Microservice\Post_Microservice.csproj", "{0AB55679-EBAD-497D-90E8-0F731225BBEF}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

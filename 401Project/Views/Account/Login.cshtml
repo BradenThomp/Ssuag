@@ -1,7 +1,7 @@
-﻿@model RegisterViewModel;
+﻿@model LoginViewModel
 
-@{ 
-    ViewData["Title"] = "Register Page";
+@{
+    ViewData["Title"] = "Login Page";
 }
 
 <div class="row">
@@ -14,22 +14,20 @@
                 <span asp-validation-for="UserName" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="Email"></label>
-                <input asp-for="Email" class="form-control" />
-                <span asp-validation-for="Email" class="text-danger"></span>
-            </div>
-            <div class="form-group">
                 <label asp-for="Password"></label>
                 <input asp-for="Password" class="form-control" />
                 <span asp-validation-for="Password" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="ConfirmPassword"></label>
-                <input asp-for="ConfirmPassword" class="form-control" />
-                <span asp-validation-for="ConfirmPassword" class="text-danger"></span>
+                <div class="checkbox">
+                    <label asp-for="RememberMe">
+                        <input asp-for="RememberMe" />
+                        @Html.DisplayNameFor(m => m.RememberMe)
+                    </label>
+                </div>
             </div>
-            <button type="submit" class="btn btn-outline-secondary">Register</button>
+            <button type="submit" class="btn btn-outline-secondary">Login</button>
         </form>
+        <a class="nav-link text-dark" asp-area="" asp-controller="Account" asp-action="Register">Not Registered? Sign Up Now!</a>
     </div>
 </div>
-

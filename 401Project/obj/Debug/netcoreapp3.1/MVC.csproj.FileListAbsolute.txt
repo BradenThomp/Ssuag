@@ -71,3 +71,5 @@ G:\DOTNET_Workspace\401Project\401Project\obj\Debug\netcoreapp3.1\MVC.dll
 G:\DOTNET_Workspace\401Project\401Project\obj\Debug\netcoreapp3.1\MVC.pdb
 G:\DOTNET_Workspace\401Project\401Project\obj\Debug\netcoreapp3.1\Razor\Views\Shared\_Favicons.cshtml.g.cs
 G:\DOTNET_Workspace\401Project\401Project\obj\Debug\netcoreapp3.1\Razor\Views\Account\Register.cshtml.g.cs
+G:\DOTNET_Workspace\401Project\401Project\obj\Debug\netcoreapp3.1\Razor\Views\Account\Login.cshtml.g.cs
+G:\DOTNET_Workspace\401Project\401Project\obj\Debug\netcoreapp3.1\Razor\Views\Account\Profile.cshtml.g.cs

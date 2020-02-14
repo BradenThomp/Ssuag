@@ -1,16 +1,26 @@
-﻿@{
+﻿@inject SignInManager<IdentityUser> signInManager;
+@inject UserManager<IdentityUser> userManager;
+@{
     ViewData["Title"] = "Home Page";
+    var user = await userManager.GetUserAsync(User);
 }
 
 <div class="text-center">
-    <h1 class="display-4">Welcome To Ssuag</h1>
+        @if (signInManager.IsSignedIn(User))
+        {
+            <h1>Welcome @user.UserName</h1>
+        }
+        else
+        {
+            <h1 class="display-4">Welcome To Ssuag</h1>
+        }
     <div id="canvas">
 
     </div>
     <button type="button" class="btn btn-outline-secondary">View Memes</button>
 </div>
 
-@section  Scripts{
+@section Scripts{
     <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/110/three.js"></script>
     <script src="~/js/cube_animation.js"></script>
 }
