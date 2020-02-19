@@ -9,7 +9,7 @@ using _401Project.Models;
 
 namespace _401Project.Migrations
 {
-    [DbContext(typeof(UserDbContext))]
+    [DbContext(typeof(ApplicationDbContext))]
     [Migration("20200208225503_Initial_Identity_Migration")]
     partial class Initial_Identity_Migration
     {

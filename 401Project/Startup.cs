@@ -33,10 +33,10 @@ namespace _401Project
 
             });
 
-            services.AddDbContextPool<UserDbContext>(options => options.UseSqlServer(Configuration.GetConnectionString("UserDbConnection")));
+            services.AddDbContextPool<ApplicationDbContext>(options => options.UseSqlServer(Configuration.GetConnectionString("ApplicationDbConnection")));
 
             services.AddIdentity<IdentityUser, IdentityRole>()
-                .AddEntityFrameworkStores<UserDbContext>();
+                .AddEntityFrameworkStores<ApplicationDbContext>();
 
             services.AddControllersWithViews();
         }
