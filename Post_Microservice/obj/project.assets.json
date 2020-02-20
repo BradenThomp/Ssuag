@@ -87,11 +87,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "G:\\DOTNET_Workspace\\401Project\\Post_Microservice\\Post_Microservice.csproj",
+      "projectUniqueName": "C:\\Users\\Braden\\Source\\Repos\\BradenThomp\\Ssuag\\Post_Microservice\\Post_Microservice.csproj",
       "projectName": "Post_Microservice",
-      "projectPath": "G:\\DOTNET_Workspace\\401Project\\Post_Microservice\\Post_Microservice.csproj",
+      "projectPath": "C:\\Users\\Braden\\Source\\Repos\\BradenThomp\\Ssuag\\Post_Microservice\\Post_Microservice.csproj",
       "packagesPath": "C:\\Users\\Braden\\.nuget\\packages\\",
-      "outputPath": "G:\\DOTNET_Workspace\\401Project\\Post_Microservice\\obj\\",
+      "outputPath": "C:\\Users\\Braden\\Source\\Repos\\BradenThomp\\Ssuag\\Post_Microservice\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\Braden\\AppData\\Roaming\\NuGet\\NuGet.Config",

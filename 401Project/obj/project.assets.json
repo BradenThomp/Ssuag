@@ -5141,11 +5141,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "G:\\DOTNET_Workspace\\401Project\\401Project\\MVC.csproj",
+      "projectUniqueName": "C:\\Users\\Braden\\Source\\Repos\\BradenThomp\\Ssuag\\401Project\\MVC.csproj",
       "projectName": "MVC",
-      "projectPath": "G:\\DOTNET_Workspace\\401Project\\401Project\\MVC.csproj",
+      "projectPath": "C:\\Users\\Braden\\Source\\Repos\\BradenThomp\\Ssuag\\401Project\\MVC.csproj",
       "packagesPath": "C:\\Users\\Braden\\.nuget\\packages\\",
-      "outputPath": "G:\\DOTNET_Workspace\\401Project\\401Project\\obj\\",
+      "outputPath": "C:\\Users\\Braden\\Source\\Repos\\BradenThomp\\Ssuag\\401Project\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\Braden\\AppData\\Roaming\\NuGet\\NuGet.Config",
