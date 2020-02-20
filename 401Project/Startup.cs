@@ -39,6 +39,8 @@ namespace _401Project
                 .AddEntityFrameworkStores<ApplicationDbContext>();
 
             services.AddControllersWithViews();
+
+            services.AddScoped<IPostRepository, SQLPostRepository>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

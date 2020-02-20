@@ -26,3 +26,11 @@ C:\Users\Braden\Source\Repos\BradenThomp\Ssuag\Comment_Microservice\obj\Debug\ne
 C:\Users\Braden\Source\Repos\BradenThomp\Ssuag\Comment_Microservice\obj\Debug\netcoreapp3.1\Comment_Microservice.RazorTargetAssemblyInfo.cache
 C:\Users\Braden\Source\Repos\BradenThomp\Ssuag\Comment_Microservice\obj\Debug\netcoreapp3.1\Comment_Microservice.dll
 C:\Users\Braden\Source\Repos\BradenThomp\Ssuag\Comment_Microservice\obj\Debug\netcoreapp3.1\Comment_Microservice.pdb
+G:\DOTNET_Workspace\401Project\Comment_Microservice\bin\Debug\netcoreapp3.1\Comment_Microservice.deps.json
+G:\DOTNET_Workspace\401Project\Comment_Microservice\bin\Debug\netcoreapp3.1\Comment_Microservice.runtimeconfig.json
+G:\DOTNET_Workspace\401Project\Comment_Microservice\bin\Debug\netcoreapp3.1\Comment_Microservice.runtimeconfig.dev.json
+G:\DOTNET_Workspace\401Project\Comment_Microservice\bin\Debug\netcoreapp3.1\Comment_Microservice.dll
+G:\DOTNET_Workspace\401Project\Comment_Microservice\bin\Debug\netcoreapp3.1\Comment_Microservice.pdb
+G:\DOTNET_Workspace\401Project\Comment_Microservice\obj\Debug\netcoreapp3.1\Comment_Microservice.MvcApplicationPartsAssemblyInfo.cache
+G:\DOTNET_Workspace\401Project\Comment_Microservice\obj\Debug\netcoreapp3.1\Comment_Microservice.dll
+G:\DOTNET_Workspace\401Project\Comment_Microservice\obj\Debug\netcoreapp3.1\Comment_Microservice.pdb
