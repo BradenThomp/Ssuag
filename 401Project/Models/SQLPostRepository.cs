@@ -34,7 +34,7 @@ namespace _401Project.Models
 
         public Post ReadPost(int Id)
         {
-            throw new NotImplementedException();
+            return Context.Posts.Find(Id);
         }
 
         public Post Update(Post changedPost)
