@@ -26,9 +26,12 @@ namespace _401Project.Controllers
             HostingEnvironment = hostingEnvironment;
         }
 
-        public IActionResult Index()
+        public async Task<IActionResult> Index(int? pageNumber)
         {
-            return View();
+            var posts = PostRepository.ReadAllPostsPaginated();
+
+            int pageSize = 3;
+            return View(await PaginatedList<Post>.CreateAsync(posts, pageNumber ?? 1, pageSize));
         }
 
         public IActionResult Inspect(int Id)

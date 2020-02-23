@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Microsoft.EntityFrameworkCore;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
@@ -8,17 +9,17 @@ namespace _401Project.Models
     //Simple CRUD Repository Pattern - Google if confused
     public class SQLPostRepository : IPostRepository
     {
-        private readonly ApplicationDbContext Context;
+        private readonly ApplicationDbContext _context;
 
         public SQLPostRepository(ApplicationDbContext context)
         {
-            Context = context;
+            _context = context;
         }
         
         public Post Create(Post post)
         {
-            Context.Posts.Add(post);
-            Context.SaveChanges();
+            _context.Posts.Add(post);
+            _context.SaveChanges();
             return post;
         }
 
@@ -32,9 +33,15 @@ namespace _401Project.Models
             throw new NotImplementedException();
         }
 
+        public IQueryable<Post> ReadAllPostsPaginated()
+        {
+            var posts = from p in _context.Posts select p;
+            return posts.AsNoTracking();
+        }
+
         public Post ReadPost(int Id)
         {
-            return Context.Posts.Find(Id);
+            return _context.Posts.Find(Id);
         }
 
         public Post Update(Post changedPost)
