@@ -4,7 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.EntityFrameworkCore;
 
-namespace _401Project.ViewModels
+namespace _401Project.Helpers.DataStructures
 {
     public class PaginatedList<T> : List<T>
     {

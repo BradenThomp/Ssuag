@@ -1,10 +1,11 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using _401Project.Models.Context;
+using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace _401Project.Models
+namespace _401Project.Models.Repository
 {
     //Simple CRUD Repository Pattern - Google if confused
     public class SQLPostRepository : IPostRepository

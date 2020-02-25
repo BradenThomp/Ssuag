@@ -1,4 +1,5 @@
 ﻿using _401Project.Models;
+using _401Project.Helpers.DataValidation;
 using Microsoft.AspNetCore.Http;
 using System;
 using System.Collections.Generic;
@@ -12,6 +13,7 @@ namespace _401Project.ViewModels
     {
 
         [Required]
+        [AllowedExtensions(new string[] { ".jpg", ".png" })]
         public IFormFile Photo { get; set; }
 
         public ICollection<Tag> Tags { get; set; }

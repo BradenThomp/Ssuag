@@ -35,13 +35,20 @@ using _401Project.ViewModels;
 #nullable disable
 #nullable restore
 #line 4 "G:\DOTNET_Workspace\401Project\401Project\Views\_ViewImports.cshtml"
+using _401Project.Helpers.DataStructures;
+
+#line default
+#line hidden
+#nullable disable
+#nullable restore
+#line 5 "G:\DOTNET_Workspace\401Project\401Project\Views\_ViewImports.cshtml"
 using Microsoft.AspNetCore.Identity;
 
 #line default
 #line hidden
 #nullable disable
     [global::Microsoft.AspNetCore.Razor.Hosting.RazorSourceChecksumAttribute(@"SHA1", @"557453353b929f0eefbbd9329af2a6cbf9301cd7", @"/Views/Post/Inspect.cshtml")]
-    [global::Microsoft.AspNetCore.Razor.Hosting.RazorSourceChecksumAttribute(@"SHA1", @"e3ffd3cdb43af3c811dd04a1f7474a9f8bbd3265", @"/Views/_ViewImports.cshtml")]
+    [global::Microsoft.AspNetCore.Razor.Hosting.RazorSourceChecksumAttribute(@"SHA1", @"ce5683a506060b02bbee7631dc4c4a147aa3646d", @"/Views/_ViewImports.cshtml")]
     public class Views_Post_Inspect : global::Microsoft.AspNetCore.Mvc.Razor.RazorPage<PostInspectViewModel>
     {
         private static readonly global::Microsoft.AspNetCore.Razor.TagHelpers.TagHelperAttribute __tagHelperAttribute_0 = new global::Microsoft.AspNetCore.Razor.TagHelpers.TagHelperAttribute("class", new global::Microsoft.AspNetCore.Html.HtmlString("card-img-top"), global::Microsoft.AspNetCore.Razor.TagHelpers.HtmlAttributeValueStyle.DoubleQuotes);
@@ -80,7 +87,7 @@ using Microsoft.AspNetCore.Identity;
 #line hidden
 #nullable disable
             WriteLiteral("\r\n");
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("img", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.SelfClosing, "557453353b929f0eefbbd9329af2a6cbf9301cd74060", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("img", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.SelfClosing, "557453353b929f0eefbbd9329af2a6cbf9301cd74251", async() => {
             }
             );
             __Microsoft_AspNetCore_Mvc_TagHelpers_ImageTagHelper = CreateTagHelper<global::Microsoft.AspNetCore.Mvc.TagHelpers.ImageTagHelper>();

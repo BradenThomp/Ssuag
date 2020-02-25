@@ -35,13 +35,20 @@ using _401Project.ViewModels;
 #nullable disable
 #nullable restore
 #line 4 "G:\DOTNET_Workspace\401Project\401Project\Views\_ViewImports.cshtml"
+using _401Project.Helpers.DataStructures;
+
+#line default
+#line hidden
+#nullable disable
+#nullable restore
+#line 5 "G:\DOTNET_Workspace\401Project\401Project\Views\_ViewImports.cshtml"
 using Microsoft.AspNetCore.Identity;
 
 #line default
 #line hidden
 #nullable disable
     [global::Microsoft.AspNetCore.Razor.Hosting.RazorSourceChecksumAttribute(@"SHA1", @"7091c65830b0329e613be026ede8a57552863778", @"/Views/_ViewStart.cshtml")]
-    [global::Microsoft.AspNetCore.Razor.Hosting.RazorSourceChecksumAttribute(@"SHA1", @"e3ffd3cdb43af3c811dd04a1f7474a9f8bbd3265", @"/Views/_ViewImports.cshtml")]
+    [global::Microsoft.AspNetCore.Razor.Hosting.RazorSourceChecksumAttribute(@"SHA1", @"ce5683a506060b02bbee7631dc4c4a147aa3646d", @"/Views/_ViewImports.cshtml")]
     public class Views__ViewStart : global::Microsoft.AspNetCore.Mvc.Razor.RazorPage<dynamic>
     {
         #pragma warning disable 1998
