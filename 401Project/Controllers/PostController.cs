@@ -9,6 +9,8 @@ using Microsoft.AspNetCore.Hosting;
 using System.IO;
 using Microsoft.AspNetCore.Authorization;
 using System.Security.Claims;
+using _401Project.Helpers.DataStructures;
+using _401Project.Models.Repository;
 
 // For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
 
@@ -33,7 +35,7 @@ namespace _401Project.Controllers
         {
             var posts = PostRepository.ReadAllPostsPaginated();
 
-            int pageSize = 3;
+            int pageSize = 20;
             return View(await PaginatedList<Post>.CreateAsync(posts, pageNumber ?? 1, pageSize));
         }
 

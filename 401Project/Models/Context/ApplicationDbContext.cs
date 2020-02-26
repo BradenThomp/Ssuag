@@ -5,7 +5,7 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 
-namespace _401Project.Models
+namespace _401Project.Models.Context
 {
     public class ApplicationDbContext : IdentityDbContext
     {

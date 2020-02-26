@@ -4,28 +4,33 @@
     ViewData["Title"] = "Post Index Page";
 }
 
+    <div class="text-center m-0 p-0">
+
+        @foreach (var item in Model)
+        {
+            var photoPath = "~/img/uploads/" + item.PhotoPath;
 
 
-@foreach (var item in Model)
-{
-    var photoPath = "~/img/uploads/" + item.PhotoPath;
+            <a class="nav-link text-dark m-0 p-0" asp-area="" asp-controller="Post" asp-action="Inspect" asp-route-id="@item.Id">
+                <img class="m-0 p-0" style="width:100%;" src=@photoPath asp-append-version="true" />
+            </a>
+        }
+
+        @{
+            var prevDisabled = !Model.HasPreviousPage ? "disabled" : "";
+            var nextDisabled = !Model.HasNextPage ? "disabled" : "";
+        }
+
+        <a asp-action="Index"
+           asp-route-pageNumber="@(Model.PageIndex - 1)"
+           class="btn btn-default @prevDisabled">
+            Previous
+        </a>
+        <a asp-action="Index"
+           asp-route-pageNumber="@(Model.PageIndex + 1)"
+           class="btn btn-default @nextDisabled">
+            Next
+        </a>
     
-    <img class="card-img-top" src=@photoPath asp-append-version="true" />
-}
-
-@{
-    var prevDisabled = !Model.HasPreviousPage ? "disabled" : "";
-    var nextDisabled = !Model.HasNextPage ? "disabled" : "";
-}
-
-<a asp-action="Index"
-   asp-route-pageNumber="@(Model.PageIndex - 1)"
-   class="btn btn-default @prevDisabled">
-    Previous
-</a>
-<a asp-action="Index"
-   asp-route-pageNumber="@(Model.PageIndex + 1)"
-   class="btn btn-default @nextDisabled">
-    Next
-</a>
+    </div>
 
