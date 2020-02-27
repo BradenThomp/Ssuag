@@ -20,6 +20,9 @@ namespace _401Project.Controllers
     {
         private readonly IPostRepository PostRepository;
 
+        /// <summary>
+        /// Reference to the hosting environment instance added in the Startup.cs.
+        /// </summary>
         private readonly IWebHostEnvironment HostingEnvironment;
 
         public PostController(IPostRepository postRepository, IWebHostEnvironment hostingEnvironment)
