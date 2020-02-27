@@ -75,6 +75,9 @@ namespace _401Project.Controllers
             return View();
         }
 
+        // <summary>
+        /// Allows user to log in with either their email or username.
+        /// </summary>
         [HttpPost]
         [AllowAnonymous]
         [ValidateAntiForgeryToken]

@@ -29,12 +29,7 @@ namespace _401Project.Models.Repository
             throw new NotImplementedException();
         }
 
-        public IEnumerable<Post> ReadAllPosts()
-        {
-            throw new NotImplementedException();
-        }
-
-        public IQueryable<Post> ReadAllPostsPaginated()
+        public IQueryable<Post> ReadAllPosts()
         {
             var posts = from p in _context.Posts select p;
             return posts.AsNoTracking();

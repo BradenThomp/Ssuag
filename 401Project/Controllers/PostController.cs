@@ -18,6 +18,9 @@ namespace _401Project.Controllers
 {
     public class PostController : Controller
     {
+        /// <summary>
+        /// Reference to Post Storage -- This is where post data is stored
+        /// </summary>
         private readonly IPostRepository PostRepository;
 
         /// <summary>
@@ -31,14 +34,20 @@ namespace _401Project.Controllers
             HostingEnvironment = hostingEnvironment;
         }
 
-        public async Task<IActionResult> Index(int? pageNumber)
+        /// <summary>
+        /// Returns a paginated list view of posts. pageSize is the number of posts to include per page.
+        /// </summary>
+        public async Task<IActionResult> Browse(int? pageNumber)
         {
-            var posts = PostRepository.ReadAllPostsPaginated();
+            var posts = PostRepository.ReadAllPosts();
 
             int pageSize = 20;
             return View(await PaginatedList<Post>.CreateAsync(posts, pageNumber ?? 1, pageSize));
         }
 
+        /// <summary>
+        /// Returns an inspected view of a post where Id is the post to inspect -- This can also be refered to as the page that contains comments.
+        /// </summary>
         public IActionResult Inspect(int Id)
         {
             PostInspectViewModel Model = new PostInspectViewModel
@@ -48,6 +57,9 @@ namespace _401Project.Controllers
             return View(Model);
         }
 
+        /// <summary>
+        /// Returns the create page which contains a form to create a post.
+        /// </summary>
         [Authorize]
         [HttpGet]
         public IActionResult Create()
@@ -55,6 +67,9 @@ namespace _401Project.Controllers
             return View();
         }
 
+        // <summary>
+        /// Called on submition of post create, Creates a new post from viewmodel and saves to repository.
+        /// </summary>
         [Authorize]
         [HttpPost]
         public IActionResult Create(PostCreateViewModel model)

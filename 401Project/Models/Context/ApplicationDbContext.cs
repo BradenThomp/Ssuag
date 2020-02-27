@@ -17,6 +17,7 @@ namespace _401Project.Models.Context
         protected override void OnModelCreating(ModelBuilder builder)
         {
             base.OnModelCreating(builder);
+            //sets post to have a one to many relationship with tags -- should handle all logic
             builder.Entity<Post>().HasMany(p => p.Tags);
         }
 

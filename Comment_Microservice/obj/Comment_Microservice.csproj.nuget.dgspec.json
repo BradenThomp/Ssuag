@@ -1,20 +1,20 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\QCepl\\source\\repos\\Ssuag\\Comment_Microservice\\Comment_Microservice.csproj": {}
+    "G:\\DOTNET_Workspace\\401Project\\Comment_Microservice\\Comment_Microservice.csproj": {}
   },
   "projects": {
-    "C:\\Users\\QCepl\\source\\repos\\Ssuag\\Comment_Microservice\\Comment_Microservice.csproj": {
+    "G:\\DOTNET_Workspace\\401Project\\Comment_Microservice\\Comment_Microservice.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\QCepl\\source\\repos\\Ssuag\\Comment_Microservice\\Comment_Microservice.csproj",
+        "projectUniqueName": "G:\\DOTNET_Workspace\\401Project\\Comment_Microservice\\Comment_Microservice.csproj",
         "projectName": "Comment_Microservice",
-        "projectPath": "C:\\Users\\QCepl\\source\\repos\\Ssuag\\Comment_Microservice\\Comment_Microservice.csproj",
-        "packagesPath": "C:\\Users\\QCepl\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\QCepl\\source\\repos\\Ssuag\\Comment_Microservice\\obj\\",
+        "projectPath": "G:\\DOTNET_Workspace\\401Project\\Comment_Microservice\\Comment_Microservice.csproj",
+        "packagesPath": "C:\\Users\\Braden\\.nuget\\packages\\",
+        "outputPath": "G:\\DOTNET_Workspace\\401Project\\Comment_Microservice\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "C:\\Users\\QCepl\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\Braden\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [

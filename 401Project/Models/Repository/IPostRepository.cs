@@ -10,9 +10,7 @@ namespace _401Project.Models.Repository
         public Post Create(Post post);
         Post ReadPost(int Id);
 
-        public IQueryable<Post> ReadAllPostsPaginated();
-
-        public IEnumerable<Post> ReadAllPosts();
+        public IQueryable<Post> ReadAllPosts();
 
         public Post Update(Post changedPost);
 
