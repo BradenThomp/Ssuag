@@ -64,17 +64,18 @@ namespace _401Project.Controllers
         [HttpGet]
         public IActionResult Create()
         {
-            return View();
+            PostCreateViewModel viewModel = new PostCreateViewModel();
+            return View(viewModel);
         }
 
-        // <summary>
+        /// <summary>
         /// Called on submition of post create, Creates a new post from viewmodel and saves to repository.
         /// </summary>
         [Authorize]
         [HttpPost]
         public IActionResult Create(PostCreateViewModel model)
         {
-            if (ModelState.IsValid)
+            if (ModelState.IsValid && model != null)
             {
                 string uniqueFileName = null;
                 if(model.Photo != null)
@@ -94,8 +95,16 @@ namespace _401Project.Controllers
                     PhotoPath = uniqueFileName,
                     UserName = userName.ToString(),
                     TimePosted = DateTime.UtcNow,
-                    Tags = null
+                    Tags = new List<Tag>()
                 };
+
+                foreach(Tag t in model.Tags)
+                {
+                    if (t.TagContent != null)
+                    {
+                        newPost.Tags.Add(t);
+                    }
+                }
 
                 PostRepository.Create(newPost);
                 return RedirectToAction("inspect", new { id = newPost.Id });
