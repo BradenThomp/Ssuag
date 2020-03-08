@@ -12,10 +12,18 @@ namespace _401Project.ViewModels
     public class PostCreateViewModel
     {
 
-        [Required]
         [AllowedExtensions(new string[] { ".jpg", ".png" })]
         public IFormFile Photo { get; set; }
 
-        public ICollection<Tag> Tags { get; set; }
+        public List<Tag> Tags { get; set; }
+
+        public PostCreateViewModel()
+        {
+            Tags = new List<Tag>();
+            for(int i = 0; i < 5; i++)
+            {
+                Tags.Add(new Tag());
+            }
+        }
     }
 }
