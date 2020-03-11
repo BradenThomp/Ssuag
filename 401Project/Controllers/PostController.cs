@@ -37,9 +37,30 @@ namespace _401Project.Controllers
         /// <summary>
         /// Returns a paginated list view of posts. pageSize is the number of posts to include per page.
         /// </summary>
-        public async Task<IActionResult> Browse(int? pageNumber)
+        public async Task<IActionResult> Browse(string sortOrder, string search, int? pageNumber)
         {
             var posts = PostRepository.ReadAllPosts();
+
+            ViewData["TagFilter"] = search;
+
+            if (!String.IsNullOrEmpty(search))
+            {
+                posts = posts.Where(s => s.Tags.Any(t => t.TagContent.Contains(search)));
+                
+            }
+
+            switch (sortOrder)
+            {
+                case "date":
+                    posts = posts.OrderBy(s => s.TimePosted);
+                    break;
+                case "date_desc":
+                    posts = posts.OrderByDescending(s => s.TimePosted);
+                    break;
+                default:
+                    posts = posts.OrderBy(s => s.TimePosted);
+                    break;
+            }
 
             int pageSize = 20;
             return View(await PaginatedList<Post>.CreateAsync(posts, pageNumber ?? 1, pageSize));
@@ -64,17 +85,18 @@ namespace _401Project.Controllers
         [HttpGet]
         public IActionResult Create()
         {
-            return View();
+            PostCreateViewModel viewModel = new PostCreateViewModel();
+            return View(viewModel);
         }
 
-        // <summary>
+        /// <summary>
         /// Called on submition of post create, Creates a new post from viewmodel and saves to repository.
         /// </summary>
         [Authorize]
         [HttpPost]
         public IActionResult Create(PostCreateViewModel model)
         {
-            if (ModelState.IsValid)
+            if (ModelState.IsValid && model != null)
             {
                 string uniqueFileName = null;
                 if(model.Photo != null)
@@ -94,8 +116,16 @@ namespace _401Project.Controllers
                     PhotoPath = uniqueFileName,
                     UserName = userName.ToString(),
                     TimePosted = DateTime.UtcNow,
-                    Tags = null
+                    Tags = new List<Tag>()
                 };
+
+                foreach(Tag t in model.Tags)
+                {
+                    if (t.TagContent != null)
+                    {
+                        newPost.Tags.Add(t);
+                    }
+                }
 
                 PostRepository.Create(newPost);
                 return RedirectToAction("inspect", new { id = newPost.Id });

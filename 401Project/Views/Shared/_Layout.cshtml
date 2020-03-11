@@ -47,14 +47,14 @@
                     </ul>
                 </div>
                 <div class="navbar-collapse collapse d-sm-inline-flex flex-sm-row-reverse">
-                    <form>
+                    <form asp-area="" asp-controller="Post" asp-action="Browse" method="get">
                         <div class="input-group">
                             <span class="input-group-prepend">
                                 <div class="input-group-text bg-transparent border-right-0">
                                     <i class="fa fa-search"></i>
                                 </div>
                             </span>
-                            <input class="form-control py-2 border-left-0 border" type="search" placeholder="Search Ssuag" id="search-input" />
+                            <input class="form-control py-2 border-left-0 border" name="Search" value="@ViewData["TagFilter"]" type="text" placeholder="Search Ssuag" id="search-input" />                
                         </div>
                     </form>
                 </div>

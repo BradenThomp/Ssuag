@@ -4,6 +4,16 @@
     ViewData["Title"] = "Post Index Page";
 }
 
+    <div class="dropdown" style="margin-bottom: 75px;">
+        <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            Sort By
+        </button>
+        <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+            <a class="dropdown-item" asp-action="Browse" asp-route-sortOrder="date_desc">Newest First</a>
+            <a class="dropdown-item" asp-action="Browse" asp-route-sortOrder="date">Oldest First</a>
+        </div>
+    </div>
+
     <div class="text-center m-0 p-0">
 
         @foreach (var item in Model)

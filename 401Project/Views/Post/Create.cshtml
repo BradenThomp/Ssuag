@@ -4,28 +4,38 @@
     ViewData["Title"] = "Create Post Page";
 }
 
-<form enctype="multipart/form-data" method="post">
-    <div asp-validation-summary="All" class="text-danger"></div>
-    <div class="form-group row">
-        <label asp-for="Photo" class="col-sm-2 col-form-label"></label>
-        <div class="custom-file">
-            <input asp-for="Photo" class="form-control custom-file-input" />
-            <label class="custom-file-label">Choose Meme</label>
-            <span asp-validation-for="Photo" class="text-danger"></span>
+    <form enctype="multipart/form-data" method="post">
+        <div asp-validation-summary="All" class="text-danger"></div>
+        <div class="form-group row">
+            <label asp-for="Photo" class="col-sm-2 col-form-label"></label>
+            <div class="custom-file">
+                <input asp-for="Photo" class="form-control custom-file-input" />
+                <label class="custom-file-label">Choose Meme</label>
+                <span asp-validation-for="Photo" class="text-danger"></span>
+            </div>
         </div>
-    </div>
-    <button type="submit" class="btn btn-outline-secondary">Post</button>
+        
 
-    @section Scripts{ 
-        <script>
-            $(document).ready(function () {
-                $('.custom-file-input').on("change", function () {
-                    var fileName = $(this).val().split("\\").pop();
-                    $(this).next('.custom-file-label').html(fileName);
+        <div class="form-group row">
+            <label asp-for="@Model.Tags"></label>
+            @for (int i = 0; i < 5; i++)
+            {
+                <input asp-for="@Model.Tags[i].TagContent" class="form-control" />
+            }
+        </div>
+
+        <button type="submit" class="btn btn-outline-secondary">Post</button>
+
+        @section Scripts{
+            <script>
+                $(document).ready(function () {
+                    $('.custom-file-input').on("change", function () {
+                        var fileName = $(this).val().split("\\").pop();
+                        $(this).next('.custom-file-label').html(fileName);
+                    });
                 });
-            });
-        </script>
-    }
+            </script>
+        }
 
-</form>
+    </form>
 
