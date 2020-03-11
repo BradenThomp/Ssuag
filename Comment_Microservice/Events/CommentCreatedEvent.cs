@@ -3,11 +3,11 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace Comment_Microservice.Command.Events
+namespace Comment_Microservice.Events
 {
-    public class CommentCreated
+    public class CommentCreatedEvent
     {
-        public CommentCreated(Guid commentId, int postId, string content, string username)
+        public CommentCreatedEvent(Guid commentId, int postId, string content, string username)
         {
             CommentId = commentId;
             PostId = postId;

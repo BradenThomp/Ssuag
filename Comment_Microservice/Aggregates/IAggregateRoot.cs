@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace Comment_Microservice.Command.Domain
+namespace Comment_Microservice.Aggregates
 {
     public interface IAggregateRoot
     {
