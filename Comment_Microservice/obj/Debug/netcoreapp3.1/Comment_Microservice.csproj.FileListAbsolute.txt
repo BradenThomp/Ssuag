@@ -99,3 +99,12 @@ G:\DOTNET_Workspace\401Project\Comment_Microservice\bin\Debug\netcoreapp3.1\runt
 G:\DOTNET_Workspace\401Project\Comment_Microservice\bin\Debug\netcoreapp3.1\runtimes\win\lib\netcoreapp2.0\System.Runtime.Caching.dll
 G:\DOTNET_Workspace\401Project\Comment_Microservice\bin\Debug\netcoreapp3.1\runtimes\win\lib\netstandard2.0\System.Security.Cryptography.ProtectedData.dll
 G:\DOTNET_Workspace\401Project\Comment_Microservice\obj\Debug\netcoreapp3.1\Comment_Microservice.csproj.CopyComplete
+G:\DOTNET_Workspace\401Project\Comment_Microservice\bin\Debug\netcoreapp3.1\Microsoft.EntityFrameworkCore.Design.dll
+G:\DOTNET_Workspace\401Project\Comment_Microservice\bin\Debug\netcoreapp3.1\EventStore.ClientAPI.dll
+G:\DOTNET_Workspace\401Project\Comment_Microservice\bin\Debug\netcoreapp3.1\Newtonsoft.Json.dll
+G:\DOTNET_Workspace\401Project\Comment_Microservice\bin\Debug\netcoreapp3.1\protobuf-net.dll
+G:\DOTNET_Workspace\401Project\Comment_Microservice\bin\Debug\netcoreapp3.1\System.ServiceModel.Primitives.dll
+G:\DOTNET_Workspace\401Project\Comment_Microservice\bin\Debug\netcoreapp3.1\System.ServiceModel.dll
+G:\DOTNET_Workspace\401Project\Comment_Microservice\bin\Debug\netcoreapp3.1\runtimes\unix\lib\netstandard2.0\System.Private.ServiceModel.dll
+G:\DOTNET_Workspace\401Project\Comment_Microservice\bin\Debug\netcoreapp3.1\runtimes\win\lib\netstandard2.0\System.Private.ServiceModel.dll
+G:\DOTNET_Workspace\401Project\Comment_Microservice\obj\Debug\netcoreapp3.1\Comment_Microservice.MvcApplicationPartsAssemblyInfo.cache
