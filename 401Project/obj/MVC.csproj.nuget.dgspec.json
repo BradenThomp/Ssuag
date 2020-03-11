@@ -1,21 +1,25 @@
 {
   "format": 1,
   "restore": {
-    "G:\\DOTNET_Workspace\\401Project\\401Project\\MVC.csproj": {}
+    "C:\\Users\\Hunter\\Documents\\SENG401\\401Project\\MVC.csproj": {}
   },
   "projects": {
-    "G:\\DOTNET_Workspace\\401Project\\401Project\\MVC.csproj": {
+    "C:\\Users\\Hunter\\Documents\\SENG401\\401Project\\MVC.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "G:\\DOTNET_Workspace\\401Project\\401Project\\MVC.csproj",
+        "projectUniqueName": "C:\\Users\\Hunter\\Documents\\SENG401\\401Project\\MVC.csproj",
         "projectName": "MVC",
-        "projectPath": "G:\\DOTNET_Workspace\\401Project\\401Project\\MVC.csproj",
-        "packagesPath": "C:\\Users\\Braden\\.nuget\\packages\\",
-        "outputPath": "G:\\DOTNET_Workspace\\401Project\\401Project\\obj\\",
+        "projectPath": "C:\\Users\\Hunter\\Documents\\SENG401\\401Project\\MVC.csproj",
+        "packagesPath": "C:\\Users\\Hunter\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\Hunter\\Documents\\SENG401\\401Project\\obj\\",
         "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Microsoft\\Xamarin\\NuGet\\"
+        ],
         "configFilePaths": [
-          "C:\\Users\\Braden\\AppData\\Roaming\\NuGet\\NuGet.Config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+          "C:\\Users\\Hunter\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Xamarin.Offline.config"
         ],
         "originalTargetFrameworks": [
           "netcoreapp3.1"
