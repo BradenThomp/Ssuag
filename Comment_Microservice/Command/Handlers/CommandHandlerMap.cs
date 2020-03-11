@@ -5,6 +5,9 @@ using System.Threading.Tasks;
 
 namespace Comment_Microservice.Command.Handlers
 {
+    /// <summary>
+    /// Master list of all commands and their tasks
+    /// </summary>
     public class CommandHandlerMap
     {
         private readonly Dictionary<string, Func<object, Task>> _handlers = new Dictionary<string, Func<object, Task>>();

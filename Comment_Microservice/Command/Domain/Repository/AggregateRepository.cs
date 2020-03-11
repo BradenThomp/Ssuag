@@ -6,6 +6,9 @@ using System.Threading.Tasks;
 
 namespace Comment_Microservice.Command.Domain.Repository
 {
+    /// <summary>
+    /// Clean interface to interact with EventStore persistent storage
+    /// </summary>
     public class AggregateRepository
     {
         readonly IEventStoreConnection _connection;

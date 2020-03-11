@@ -13,11 +13,18 @@ namespace Comment_Microservice.Command.Events
     {
         public CommentCommandHandlers(AggregateRepository repository)
         {
-            //code executes when a CreateComment Command is dispatched
+            /*
+             * Use lambda expression to dynamically create a method that will be executed when
+             * the dispatcher is told to execute that command. 
+             */
             Register<CreateComment>(async c =>
             {
-                var encounter = new Comment(c.CommentId, c.PostId, c.Content, c.Username);
-                await repository.Save(encounter);
+                /*
+                 * Create new comment and a corresponding event.
+                 * Save the new comment to Event Store.
+                 */
+                var newComment = new Comment(c.CommentId, c.PostId, c.Content, c.Username);
+                await repository.Save(newComment);
             });
         }
     }
