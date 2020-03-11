@@ -3,10 +3,10 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Net;
 using System.Threading.Tasks;
-using Comment_Microservice.Command;
-using Comment_Microservice.Command.Domain.Repository;
-using Comment_Microservice.Command.Events;
-using Comment_Microservice.Command.Handlers;
+using Comment_Microservice.Commands;
+using Comment_Microservice.Aggregates.Repository;
+using Comment_Microservice.Events;
+using Comment_Microservice.Commands.Handlers;
 using EventStore.ClientAPI;
 using Microsoft.AspNetCore.Mvc;
 
@@ -32,8 +32,10 @@ namespace Comment_Microservice.Controllers
             //injects the connection into an AggregateRepository
             var repository = new AggregateRepository(eventStoreConnection);
 
+            CommentCommandHandler[] commands = { new CommentCommandHandler(repository) };
+
             //inject AggregateRepository into a CommentHandlers(event handler) then map all comment commands
-            var commandHandlerMap = new CommandHandlerMap(new CommentCommandHandlers(repository));
+            var commandHandlerMap = new CommandHandlerMap(commands);
 
             //inject mapped commands into dispatcher
             _dispatcher = new Dispatcher(commandHandlerMap);

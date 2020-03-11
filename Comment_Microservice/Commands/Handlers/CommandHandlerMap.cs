@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace Comment_Microservice.Command.Handlers
+namespace Comment_Microservice.Commands.Handlers
 {
     /// <summary>
     /// Master list of all commands and their tasks
