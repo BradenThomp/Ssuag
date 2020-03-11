@@ -151,3 +151,6 @@ C:\Users\Braden\Source\Repos\BradenThomp\Ssuag\401Project\obj\Debug\netcoreapp3.
 G:\DOTNET_Workspace\401Project\401Project\obj\Debug\netcoreapp3.1\Razor\Views\Post\Create.cshtml.g.cs
 G:\DOTNET_Workspace\401Project\401Project\obj\Debug\netcoreapp3.1\Razor\Views\Post\Inspect.cshtml.g.cs
 G:\DOTNET_Workspace\401Project\401Project\obj\Debug\netcoreapp3.1\Razor\Views\Post\Browse.cshtml.g.cs
+C:\Users\Braden\Source\Repos\BradenThomp\Ssuag\401Project\obj\Debug\netcoreapp3.1\Razor\Views\Post\Browse.cshtml.g.cs
+C:\Users\Braden\Source\Repos\BradenThomp\Ssuag\401Project\obj\Debug\netcoreapp3.1\Razor\Views\Post\Create.cshtml.g.cs
+C:\Users\Braden\Source\Repos\BradenThomp\Ssuag\401Project\obj\Debug\netcoreapp3.1\Razor\Views\Post\Inspect.cshtml.g.cs

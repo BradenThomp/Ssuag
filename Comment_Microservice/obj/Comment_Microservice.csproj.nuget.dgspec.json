@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "G:\\DOTNET_Workspace\\401Project\\Comment_Microservice\\Comment_Microservice.csproj": {}
+    "C:\\Users\\Braden\\Source\\Repos\\BradenThomp\\Ssuag\\Comment_Microservice\\Comment_Microservice.csproj": {}
   },
   "projects": {
-    "G:\\DOTNET_Workspace\\401Project\\Comment_Microservice\\Comment_Microservice.csproj": {
+    "C:\\Users\\Braden\\Source\\Repos\\BradenThomp\\Ssuag\\Comment_Microservice\\Comment_Microservice.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "G:\\DOTNET_Workspace\\401Project\\Comment_Microservice\\Comment_Microservice.csproj",
+        "projectUniqueName": "C:\\Users\\Braden\\Source\\Repos\\BradenThomp\\Ssuag\\Comment_Microservice\\Comment_Microservice.csproj",
         "projectName": "Comment_Microservice",
-        "projectPath": "G:\\DOTNET_Workspace\\401Project\\Comment_Microservice\\Comment_Microservice.csproj",
+        "projectPath": "C:\\Users\\Braden\\Source\\Repos\\BradenThomp\\Ssuag\\Comment_Microservice\\Comment_Microservice.csproj",
         "packagesPath": "C:\\Users\\Braden\\.nuget\\packages\\",
-        "outputPath": "G:\\DOTNET_Workspace\\401Project\\Comment_Microservice\\obj\\",
+        "outputPath": "C:\\Users\\Braden\\Source\\Repos\\BradenThomp\\Ssuag\\Comment_Microservice\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\Braden\\AppData\\Roaming\\NuGet\\NuGet.Config",
