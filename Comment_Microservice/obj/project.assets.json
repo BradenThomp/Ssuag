@@ -103,7 +103,7 @@
           "Microsoft.EntityFrameworkCore.Relational": "3.1.2"
         },
         "compile": {
-          "lib/netstandard2.0/Microsoft.EntityFrameworkCore.Design.dll": {}
+          "lib/netstandard2.0/_._": {}
         },
         "runtime": {
           "lib/netstandard2.0/Microsoft.EntityFrameworkCore.Design.dll": {}
@@ -5066,19 +5066,19 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\Braden\\.nuget\\packages\\": {}
+    "C:\\Users\\QCepl\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "G:\\DOTNET_Workspace\\401Project\\Comment_Microservice\\Comment_Microservice.csproj",
+      "projectUniqueName": "C:\\Users\\QCepl\\source\\repos\\Ssuag\\Comment_Microservice\\Comment_Microservice.csproj",
       "projectName": "Comment_Microservice",
-      "projectPath": "G:\\DOTNET_Workspace\\401Project\\Comment_Microservice\\Comment_Microservice.csproj",
-      "packagesPath": "C:\\Users\\Braden\\.nuget\\packages\\",
-      "outputPath": "G:\\DOTNET_Workspace\\401Project\\Comment_Microservice\\obj\\",
+      "projectPath": "C:\\Users\\QCepl\\source\\repos\\Ssuag\\Comment_Microservice\\Comment_Microservice.csproj",
+      "packagesPath": "C:\\Users\\QCepl\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\QCepl\\source\\repos\\Ssuag\\Comment_Microservice\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
-        "C:\\Users\\Braden\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\QCepl\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [

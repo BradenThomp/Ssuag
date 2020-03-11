@@ -8398,19 +8398,19 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\Braden\\.nuget\\packages\\": {}
+    "C:\\Users\\QCepl\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "G:\\DOTNET_Workspace\\401Project\\401Project\\MVC.csproj",
+      "projectUniqueName": "C:\\Users\\QCepl\\source\\repos\\Ssuag\\401Project\\MVC.csproj",
       "projectName": "MVC",
-      "projectPath": "G:\\DOTNET_Workspace\\401Project\\401Project\\MVC.csproj",
-      "packagesPath": "C:\\Users\\Braden\\.nuget\\packages\\",
-      "outputPath": "G:\\DOTNET_Workspace\\401Project\\401Project\\obj\\",
+      "projectPath": "C:\\Users\\QCepl\\source\\repos\\Ssuag\\401Project\\MVC.csproj",
+      "packagesPath": "C:\\Users\\QCepl\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\QCepl\\source\\repos\\Ssuag\\401Project\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
-        "C:\\Users\\Braden\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\QCepl\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
