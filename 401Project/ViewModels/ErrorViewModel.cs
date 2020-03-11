@@ -1,6 +1,6 @@
 using System;
 
-namespace _401Project.Models
+namespace _401Project.ViewModels
 {
     public class ErrorViewModel
     {

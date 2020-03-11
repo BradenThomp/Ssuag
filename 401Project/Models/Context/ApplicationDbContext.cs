@@ -5,7 +5,7 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 
-namespace _401Project.Models
+namespace _401Project.Models.Context
 {
     public class ApplicationDbContext : IdentityDbContext
     {
@@ -17,6 +17,7 @@ namespace _401Project.Models
         protected override void OnModelCreating(ModelBuilder builder)
         {
             base.OnModelCreating(builder);
+            //sets post to have a one to many relationship with tags -- should handle all logic
             builder.Entity<Post>().HasMany(p => p.Tags);
         }
 

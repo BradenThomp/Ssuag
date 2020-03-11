@@ -1,0 +1,8 @@
+﻿@model PostInspectViewModel
+
+@{
+    ViewData["Title"] = "Inspect Post Page";
+    var photoPath = "~/img/uploads/" + Model.Post.PhotoPath;
+}
+
+<img class="card-img-top" src=@photoPath asp-append-version="true"/>
