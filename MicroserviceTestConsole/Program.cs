@@ -1,11 +1,9 @@
-﻿using Comment_Microservice.Command;
-using Comment_Microservice.Command.Handlers;
-using Comment_Microservice.Command.Store;
-using EventStore.ClientAPI;
+﻿using EventStore.ClientAPI;
 using Newtonsoft.Json;
 using System;
 using System.Net;
 using System.Threading.Tasks;
+using Comment_Microservice.Commands;
 
 namespace MicroserviceTestConsole
 {
@@ -24,7 +22,7 @@ namespace MicroserviceTestConsole
 
             var createComment = new CreateComment{
                 CommentId = commentId, 
-                PostId = 10, 
+                PostId = Guid.NewGuid(), 
                 Content = "comment", 
                 Username = "Vector_Bubbs", 
                 TimeOfCreation = DateTime.UtcNow 

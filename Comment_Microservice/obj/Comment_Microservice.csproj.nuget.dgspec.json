@@ -1,21 +1,25 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\QCepl\\source\\repos\\Ssuag\\Comment_Microservice\\Comment_Microservice.csproj": {}
+    "C:\\Users\\Edwar\\Documents\\SENG401\\repos\\Comment_Microservice\\Comment_Microservice.csproj": {}
   },
   "projects": {
-    "C:\\Users\\QCepl\\source\\repos\\Ssuag\\Comment_Microservice\\Comment_Microservice.csproj": {
+    "C:\\Users\\Edwar\\Documents\\SENG401\\repos\\Comment_Microservice\\Comment_Microservice.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\QCepl\\source\\repos\\Ssuag\\Comment_Microservice\\Comment_Microservice.csproj",
+        "projectUniqueName": "C:\\Users\\Edwar\\Documents\\SENG401\\repos\\Comment_Microservice\\Comment_Microservice.csproj",
         "projectName": "Comment_Microservice",
-        "projectPath": "C:\\Users\\QCepl\\source\\repos\\Ssuag\\Comment_Microservice\\Comment_Microservice.csproj",
-        "packagesPath": "C:\\Users\\QCepl\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\QCepl\\source\\repos\\Ssuag\\Comment_Microservice\\obj\\",
+        "projectPath": "C:\\Users\\Edwar\\Documents\\SENG401\\repos\\Comment_Microservice\\Comment_Microservice.csproj",
+        "packagesPath": "C:\\Users\\Edwar\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\Edwar\\Documents\\SENG401\\repos\\Comment_Microservice\\obj\\",
         "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Microsoft\\Xamarin\\NuGet\\"
+        ],
         "configFilePaths": [
-          "C:\\Users\\QCepl\\AppData\\Roaming\\NuGet\\NuGet.Config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+          "C:\\Users\\Edwar\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Xamarin.Offline.config"
         ],
         "originalTargetFrameworks": [
           "netcoreapp3.1"
