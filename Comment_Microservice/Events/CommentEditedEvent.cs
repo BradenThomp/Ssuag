@@ -6,25 +6,19 @@ using System.Threading.Tasks;
 namespace Comment_Microservice.Events
 {
     /// <summary>
-    /// Event to create a new standalone comment.
+    /// Event that marks which comment was edited, and what the new content is.
     /// </summary>
-    public class CommentCreatedEvent
+    public class CommentEditedEvent
     {
-        public CommentCreatedEvent(Guid commentId, Guid postId, string content, string username)
+        public CommentEditedEvent(Guid commentId, string content)
         {
             CommentId = commentId;
-            PostId = postId;
             Content = content;
-            Username = username;
         }
 
         public Guid CommentId { get; }
 
-        public Guid PostId { get; }
-
         public string Content { get; }
-
-        public string Username { get; }
 
     }
 }

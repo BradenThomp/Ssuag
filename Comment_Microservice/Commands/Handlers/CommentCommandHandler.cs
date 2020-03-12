@@ -28,6 +28,36 @@ namespace Comment_Microservice.Commands.Handlers
                 var newComment = new CommentAggregate(c.CommentId, c.PostId, c.Content, c.Username);
                 await repository.Save(newComment);
             });
+
+            Register<ReplyToCommentCommand>(async c =>
+                {
+                    //code executes when a ReplyToCommentCommand is dispatched
+                    //Creates a new comment aggregate (which creates a new Event in its ctor)
+                    //sends it to the repository which pushes new events to EventStore
+                    var newCommentReply = new CommentAggregate(c.CommentId, c.ParentId, c.PostId, c.Content, c.Username);
+                    await repository.Save(newCommentReply);
+                }
+            );
+
+            Register<EditComment>(async c =>
+            {
+                //code executes when a EditComment Command is dispatched
+                //Pulls a copy of the comment from the repository, applies the new content to it and
+                //sends it to the repository which pushes new events to EventStore
+                var comment = await repository.Get<CommentAggregate>(c.CommentId);
+                comment.EditComment(c.Content);
+                await repository.Save(comment);
+            });
+
+            Register<DeleteComment>(async c =>
+            {
+                //code executes when a DeleteComment Command is dispatched
+                //Pulls a copy of the comment from the repository, changes the delete flag to true and
+                //sends it to the repository which pushes new events to EventStore
+                var comment = await repository.Get<CommentAggregate>(c.CommentId);
+                comment.DeleteComment();
+                await repository.Save(comment);
+            });
         }
     }
 }

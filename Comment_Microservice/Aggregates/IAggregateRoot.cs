@@ -5,6 +5,9 @@ using System.Threading.Tasks;
 
 namespace Comment_Microservice.Aggregates
 {
+    /// <summary>
+    /// Methods to manipulate Events that apply to an aggregate object
+    /// </summary>
     public interface IAggregateRoot
     {
         List<object> GetEvents();
@@ -15,6 +18,9 @@ namespace Comment_Microservice.Aggregates
 
         Guid Id { get; }
 
+        /// <summary>
+        /// Next valid int value. Prevents race conditions.
+        /// </summary>
         int Version { get; }
     }
 }

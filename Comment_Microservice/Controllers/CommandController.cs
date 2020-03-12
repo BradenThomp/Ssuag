@@ -55,6 +55,12 @@ namespace Comment_Microservice.Controllers
 
         }
 
+        [HttpPost]
+        public async Task ReplyToComment([FromBody] ReplyToCommentCommand replyToCommentCommand)
+        {
+            await _dispatcher.Dispatch(replyToCommentCommand);
+        }
+
 
 
     }
