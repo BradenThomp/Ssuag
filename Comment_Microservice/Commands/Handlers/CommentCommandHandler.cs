@@ -8,16 +8,25 @@ using System.Threading.Tasks;
 
 namespace Comment_Microservice.Commands.Handlers
 {
+    /// <summary>
+    /// Responsible for storing all code for how commands related to comments should be handled.
+    /// </summary>
     public class CommentCommandHandler : CommandHandler
     {
         public CommentCommandHandler(AggregateRepository repository)
         {
-            //code executes when a CreateComment Command is dispatched
-            //Creates a new comment aggregate and sends it to the repository which pushes new events to EventStore
+            /*
+             * Below, see a list of how to respond to commands.
+             * Lambda expressions dynamically create methods, which are assigned to the parameterized command
+             * Consider the Register methods as separate from the lambda expressions.
+             */
             Register<CreateComment>(async c =>
             {
-                var encounter = new CommentAggregate(c.CommentId, c.PostId, c.Content, c.Username);
-                await repository.Save(encounter);
+                //code executes when a CreateComment Command is dispatched
+                //Creates a new comment aggregate (which creates a new Event in its ctor)
+                //sends it to the repository which pushes new events to EventStore
+                var newComment = new CommentAggregate(c.CommentId, c.PostId, c.Content, c.Username);
+                await repository.Save(newComment);
             });
         }
     }

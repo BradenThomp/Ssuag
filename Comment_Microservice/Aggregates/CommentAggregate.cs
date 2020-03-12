@@ -6,6 +6,10 @@ using System.Threading.Tasks;
 
 namespace Comment_Microservice.Aggregates
 {
+    /// <summary>
+    /// Encapsulates all properties of a comment, and the actions to be taken
+    /// when an Event is incoming concerning a comment.
+    /// </summary>
     public class CommentAggregate : AggregateRoot
     {
         int _postId;
@@ -14,12 +18,18 @@ namespace Comment_Microservice.Aggregates
 
         public string _username;
 
-        //Raises a new comment created event
+        /*
+         * Calls private ctor first
+         * Creates new event, which is then handled by the appropriate method
+         */
         public CommentAggregate(Guid commentId, int postId, string content, string username) : this()
         {
             Raise(new CommentCreatedEvent(commentId, postId, content, username));
         }
 
+        /*
+         * Tells AggregateRoot which On method to call when event raised.
+         */
         private CommentAggregate()
         {
             Register<CommentCreatedEvent>(On);
