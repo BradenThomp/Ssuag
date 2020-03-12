@@ -6812,23 +6812,23 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\Edwar\\.nuget\\packages\\": {},
+    "C:\\Users\\Hunter\\.nuget\\packages\\": {},
     "C:\\Microsoft\\Xamarin\\NuGet\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\Edwar\\Documents\\SENG401\\repos\\Comment_Microservice\\Comment_Microservice.csproj",
+      "projectUniqueName": "C:\\Users\\Hunter\\Documents\\SENG401\\Comment_Microservice\\Comment_Microservice.csproj",
       "projectName": "Comment_Microservice",
-      "projectPath": "C:\\Users\\Edwar\\Documents\\SENG401\\repos\\Comment_Microservice\\Comment_Microservice.csproj",
-      "packagesPath": "C:\\Users\\Edwar\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\Edwar\\Documents\\SENG401\\repos\\Comment_Microservice\\obj\\",
+      "projectPath": "C:\\Users\\Hunter\\Documents\\SENG401\\Comment_Microservice\\Comment_Microservice.csproj",
+      "packagesPath": "C:\\Users\\Hunter\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\Hunter\\Documents\\SENG401\\Comment_Microservice\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Microsoft\\Xamarin\\NuGet\\"
       ],
       "configFilePaths": [
-        "C:\\Users\\Edwar\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\Hunter\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Xamarin.Offline.config"
       ],
