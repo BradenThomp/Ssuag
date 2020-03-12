@@ -28,6 +28,13 @@ namespace Comment_Microservice.Commands.Handlers
                 var newComment = new CommentAggregate(c.CommentId, c.PostId, c.Content, c.Username);
                 await repository.Save(newComment);
             });
+
+            Register<ReplyToCommentCommand>(async c =>
+                {
+                    var newCommentReply = new CommentAggregate(c.CommentId, c.ParentId, c.PostId, c.Content, c.Username);
+                    await repository.Save(newCommentReply);
+                }
+            );
         }
     }
 }
