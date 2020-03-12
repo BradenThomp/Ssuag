@@ -5,9 +5,12 @@ using System.Threading.Tasks;
 
 namespace Comment_Microservice.Events
 {
+    /// <summary>
+    /// Event to create a new standalone comment.
+    /// </summary>
     public class CommentCreatedEvent
     {
-        public CommentCreatedEvent(Guid commentId, int postId, string content, string username)
+        public CommentCreatedEvent(Guid commentId, Guid postId, string content, string username)
         {
             CommentId = commentId;
             PostId = postId;
@@ -17,7 +20,7 @@ namespace Comment_Microservice.Events
 
         public Guid CommentId { get; }
 
-        public int PostId { get; }
+        public Guid PostId { get; }
 
         public string Content { get; }
 

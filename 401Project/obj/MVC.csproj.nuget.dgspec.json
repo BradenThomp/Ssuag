@@ -1,21 +1,25 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\Braden\\Source\\Repos\\BradenThomp\\Ssuag\\401Project\\MVC.csproj": {}
+    "C:\\Users\\Edwar\\Documents\\SENG401\\repos\\401Project\\MVC.csproj": {}
   },
   "projects": {
-    "C:\\Users\\Braden\\Source\\Repos\\BradenThomp\\Ssuag\\401Project\\MVC.csproj": {
+    "C:\\Users\\Edwar\\Documents\\SENG401\\repos\\401Project\\MVC.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Braden\\Source\\Repos\\BradenThomp\\Ssuag\\401Project\\MVC.csproj",
+        "projectUniqueName": "C:\\Users\\Edwar\\Documents\\SENG401\\repos\\401Project\\MVC.csproj",
         "projectName": "MVC",
-        "projectPath": "C:\\Users\\Braden\\Source\\Repos\\BradenThomp\\Ssuag\\401Project\\MVC.csproj",
-        "packagesPath": "C:\\Users\\Braden\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Braden\\Source\\Repos\\BradenThomp\\Ssuag\\401Project\\obj\\",
+        "projectPath": "C:\\Users\\Edwar\\Documents\\SENG401\\repos\\401Project\\MVC.csproj",
+        "packagesPath": "C:\\Users\\Edwar\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\Edwar\\Documents\\SENG401\\repos\\401Project\\obj\\",
         "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Microsoft\\Xamarin\\NuGet\\"
+        ],
         "configFilePaths": [
-          "C:\\Users\\Braden\\AppData\\Roaming\\NuGet\\NuGet.Config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+          "C:\\Users\\Edwar\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Xamarin.Offline.config"
         ],
         "originalTargetFrameworks": [
           "netcoreapp3.1"
@@ -42,6 +46,10 @@
               "target": "Package",
               "version": "[1.2.1, )"
             },
+            "EventStore.Client": {
+              "target": "Package",
+              "version": "[5.0.6, )"
+            },
             "Microsoft.AspNetCore.Identity.EntityFrameworkCore": {
               "target": "Package",
               "version": "[3.1.1, )"
@@ -59,6 +67,10 @@
             "Microsoft.VisualStudio.Web.CodeGeneration.Design": {
               "target": "Package",
               "version": "[3.1.1, )"
+            },
+            "Raven": {
+              "target": "Package",
+              "version": "[1.0.0, )"
             }
           },
           "imports": [
