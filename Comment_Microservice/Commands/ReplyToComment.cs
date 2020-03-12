@@ -8,7 +8,7 @@ namespace Comment_Microservice.Commands
     /// <summary>
     /// Stores all contents of the new reply to be created.
     /// </summary>
-    public class ReplyToCommentCommand
+    public class ReplyToComment
     {
         // ID of this comment
         public Guid CommentId { get; set; }
@@ -24,5 +24,15 @@ namespace Comment_Microservice.Commands
         public string Username { get; set; }
 
         public DateTime TimeOfCreation { get; set; }
+
+        public void generateId()
+        {
+            CommentId = Guid.NewGuid();
+        }
+
+        public void generateCreationTime()
+        {
+            TimeOfCreation = DateTime.UtcNow;
+        }
     }
 }
