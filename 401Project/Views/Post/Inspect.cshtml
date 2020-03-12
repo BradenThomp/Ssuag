@@ -13,9 +13,4 @@
     render here
 -->
 
-@foreach (var comment in Model.commentsExample)
-{
-	<p>
-	@comment.Content
-	</p>
-}
+@Html.Raw(Model.CommentHTML)

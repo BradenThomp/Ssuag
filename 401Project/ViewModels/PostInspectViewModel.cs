@@ -12,6 +12,8 @@ namespace _401Project.ViewModels
 		
 		public List<Comment> commentsExample {get; set;}
 		
+		public string CommentHTML;
+		
 		public PostInspectViewModel()
 		{
 			commentsExample = new List<Comment>();
@@ -21,7 +23,8 @@ namespace _401Project.ViewModels
 			commentsExample.Add(new Comment{CommentId = 4, ParentId = 2, Content="general"});
 			commentsExample.Add(new Comment{CommentId = 5, ParentId = 3, Content="child"});
 			commentsExample.Add(new Comment{CommentId = 6, ParentId = 4, Content="kenobi"});
-			commentsExample.Add(new Comment{CommentId = 7, ParentId = 6, Content="child"});
+			
+			CommentHTML = Comment.CommentListToHTML(commentsExample);
 
 		}
     }
