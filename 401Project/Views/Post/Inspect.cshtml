@@ -12,3 +12,10 @@
     if microservice returns HTML for how comments are to be displayed,
     render here
 -->
+
+@foreach (var comment in Model.commentsExample)
+{
+	<p>
+	@comment.Content
+	</p>
+}
