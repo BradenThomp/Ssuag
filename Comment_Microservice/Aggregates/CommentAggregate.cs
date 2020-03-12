@@ -14,7 +14,9 @@ namespace Comment_Microservice.Aggregates
     {
         Guid _commentId;
 
-        Guid _parentID;
+        Guid _parentId;
+
+        Guid _postId;
 
         string _content;
 
@@ -28,7 +30,7 @@ namespace Comment_Microservice.Aggregates
          * Calls private ctor first
          * Creates new event, which is then handled by the appropriate method
          */
-        public CommentAggregate(Guid commentId, int postId, string content, string username) : this()
+        public CommentAggregate(Guid commentId, Guid postId, string content, string username) : this()
         {
             Raise(new CommentCreatedEvent(commentId, postId, content, username));
         }
@@ -43,7 +45,7 @@ namespace Comment_Microservice.Aggregates
 
         private void On(CommentCreatedEvent e)
         {
-            Id = e.CommentId;
+            _commentId = e.CommentId;
             _postId = e.PostId;
             _content = e.Content;
             _username = e.Username;

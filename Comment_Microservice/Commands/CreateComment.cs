@@ -9,8 +9,8 @@ namespace Comment_Microservice.Commands
     {
 
         public Guid CommentId { get; set; }
-
-        public int PostId { get; set; }
+        
+        public Guid PostId { get; set; }
 
         public string Content { get; set; }
 

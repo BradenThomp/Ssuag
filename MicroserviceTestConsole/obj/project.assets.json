@@ -6763,19 +6763,19 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\Braden\\.nuget\\packages\\": {}
+    "C:\\Users\\QCepl\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\Braden\\Source\\Repos\\BradenThomp\\Ssuag\\MicroserviceTestConsole\\MicroserviceTestConsole.csproj",
+      "projectUniqueName": "C:\\Users\\QCepl\\source\\repos\\Ssuag\\MicroserviceTestConsole\\MicroserviceTestConsole.csproj",
       "projectName": "MicroserviceTestConsole",
-      "projectPath": "C:\\Users\\Braden\\Source\\Repos\\BradenThomp\\Ssuag\\MicroserviceTestConsole\\MicroserviceTestConsole.csproj",
-      "packagesPath": "C:\\Users\\Braden\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\Braden\\Source\\Repos\\BradenThomp\\Ssuag\\MicroserviceTestConsole\\obj\\",
+      "projectPath": "C:\\Users\\QCepl\\source\\repos\\Ssuag\\MicroserviceTestConsole\\MicroserviceTestConsole.csproj",
+      "packagesPath": "C:\\Users\\QCepl\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\QCepl\\source\\repos\\Ssuag\\MicroserviceTestConsole\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
-        "C:\\Users\\Braden\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\QCepl\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
@@ -6788,8 +6788,8 @@
       "frameworks": {
         "netcoreapp3.1": {
           "projectReferences": {
-            "C:\\Users\\Braden\\Source\\Repos\\BradenThomp\\Ssuag\\Comment_Microservice\\Comment_Microservice.csproj": {
-              "projectPath": "C:\\Users\\Braden\\Source\\Repos\\BradenThomp\\Ssuag\\Comment_Microservice\\Comment_Microservice.csproj"
+            "C:\\Users\\QCepl\\source\\repos\\Ssuag\\Comment_Microservice\\Comment_Microservice.csproj": {
+              "projectPath": "C:\\Users\\QCepl\\source\\repos\\Ssuag\\Comment_Microservice\\Comment_Microservice.csproj"
             }
           }
         }
@@ -6819,6 +6819,9 @@
         "assetTargetFallback": true,
         "warn": true,
         "frameworkReferences": {
+          "Microsoft.AspNetCore.App": {
+            "privateAssets": "none"
+          },
           "Microsoft.NETCore.App": {
             "privateAssets": "all"
           }
