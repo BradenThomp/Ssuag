@@ -8,7 +8,7 @@ namespace Comment_Microservice.Commands
     public class CreateComment
     {
 
-        public Guid CommentId { get; set; }
+        public Guid CommentId { get; private set; }
 
         public int PostId { get; set; }
 
@@ -16,6 +16,16 @@ namespace Comment_Microservice.Commands
 
         public string Username { get; set; }
 
-        public DateTime TimeOfCreation { get; set; }
+        public DateTime TimeOfRecieval { get; private set; }
+
+        public void generateId()
+        {
+            CommentId = Guid.NewGuid();
+        }
+
+        public void generateRecievalTime()
+        {
+            TimeOfRecieval = DateTime.UtcNow;
+        }
     }
 }

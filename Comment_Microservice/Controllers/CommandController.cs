@@ -49,10 +49,10 @@ namespace Comment_Microservice.Controllers
         [HttpPost]
         public async Task CreateComment([FromBody] CreateComment createComment) 
         {
-
+            createComment.generateId();
+            createComment.generateRecievalTime();
             //dispatches a new CreateComment Command
             await _dispatcher.Dispatch(createComment);
-
         }
 
 
