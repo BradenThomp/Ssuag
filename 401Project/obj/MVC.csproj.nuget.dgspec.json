@@ -1,23 +1,23 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\Hunter\\Documents\\SENG401\\401Project\\MVC.csproj": {}
+    "C:\\Users\\Edwar\\Documents\\SENG401\\repos\\401Project\\MVC.csproj": {}
   },
   "projects": {
-    "C:\\Users\\Hunter\\Documents\\SENG401\\401Project\\MVC.csproj": {
+    "C:\\Users\\Edwar\\Documents\\SENG401\\repos\\401Project\\MVC.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Hunter\\Documents\\SENG401\\401Project\\MVC.csproj",
+        "projectUniqueName": "C:\\Users\\Edwar\\Documents\\SENG401\\repos\\401Project\\MVC.csproj",
         "projectName": "MVC",
-        "projectPath": "C:\\Users\\Hunter\\Documents\\SENG401\\401Project\\MVC.csproj",
-        "packagesPath": "C:\\Users\\Hunter\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Hunter\\Documents\\SENG401\\401Project\\obj\\",
+        "projectPath": "C:\\Users\\Edwar\\Documents\\SENG401\\repos\\401Project\\MVC.csproj",
+        "packagesPath": "C:\\Users\\Edwar\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\Edwar\\Documents\\SENG401\\repos\\401Project\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Microsoft\\Xamarin\\NuGet\\"
         ],
         "configFilePaths": [
-          "C:\\Users\\Hunter\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\Edwar\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Xamarin.Offline.config"
         ],
@@ -67,6 +67,10 @@
             "Microsoft.VisualStudio.Web.CodeGeneration.Design": {
               "target": "Package",
               "version": "[3.1.1, )"
+            },
+            "Raven": {
+              "target": "Package",
+              "version": "[1.0.0, )"
             }
           },
           "imports": [

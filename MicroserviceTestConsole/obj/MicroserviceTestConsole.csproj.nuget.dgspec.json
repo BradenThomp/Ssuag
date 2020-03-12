@@ -1,23 +1,23 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\Hunter\\Documents\\SENG401\\MicroserviceTestConsole\\MicroserviceTestConsole.csproj": {}
+    "C:\\Users\\Edwar\\Documents\\SENG401\\repos\\MicroserviceTestConsole\\MicroserviceTestConsole.csproj": {}
   },
   "projects": {
-    "C:\\Users\\Hunter\\Documents\\SENG401\\Comment_Microservice\\Comment_Microservice.csproj": {
+    "C:\\Users\\Edwar\\Documents\\SENG401\\repos\\Comment_Microservice\\Comment_Microservice.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Hunter\\Documents\\SENG401\\Comment_Microservice\\Comment_Microservice.csproj",
+        "projectUniqueName": "C:\\Users\\Edwar\\Documents\\SENG401\\repos\\Comment_Microservice\\Comment_Microservice.csproj",
         "projectName": "Comment_Microservice",
-        "projectPath": "C:\\Users\\Hunter\\Documents\\SENG401\\Comment_Microservice\\Comment_Microservice.csproj",
-        "packagesPath": "C:\\Users\\Hunter\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Hunter\\Documents\\SENG401\\Comment_Microservice\\obj\\",
+        "projectPath": "C:\\Users\\Edwar\\Documents\\SENG401\\repos\\Comment_Microservice\\Comment_Microservice.csproj",
+        "packagesPath": "C:\\Users\\Edwar\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\Edwar\\Documents\\SENG401\\repos\\Comment_Microservice\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Microsoft\\Xamarin\\NuGet\\"
         ],
         "configFilePaths": [
-          "C:\\Users\\Hunter\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\Edwar\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Xamarin.Offline.config"
         ],
@@ -83,20 +83,20 @@
         }
       }
     },
-    "C:\\Users\\Hunter\\Documents\\SENG401\\MicroserviceTestConsole\\MicroserviceTestConsole.csproj": {
+    "C:\\Users\\Edwar\\Documents\\SENG401\\repos\\MicroserviceTestConsole\\MicroserviceTestConsole.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Hunter\\Documents\\SENG401\\MicroserviceTestConsole\\MicroserviceTestConsole.csproj",
+        "projectUniqueName": "C:\\Users\\Edwar\\Documents\\SENG401\\repos\\MicroserviceTestConsole\\MicroserviceTestConsole.csproj",
         "projectName": "MicroserviceTestConsole",
-        "projectPath": "C:\\Users\\Hunter\\Documents\\SENG401\\MicroserviceTestConsole\\MicroserviceTestConsole.csproj",
-        "packagesPath": "C:\\Users\\Hunter\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Hunter\\Documents\\SENG401\\MicroserviceTestConsole\\obj\\",
+        "projectPath": "C:\\Users\\Edwar\\Documents\\SENG401\\repos\\MicroserviceTestConsole\\MicroserviceTestConsole.csproj",
+        "packagesPath": "C:\\Users\\Edwar\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\Edwar\\Documents\\SENG401\\repos\\MicroserviceTestConsole\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Microsoft\\Xamarin\\NuGet\\"
         ],
         "configFilePaths": [
-          "C:\\Users\\Hunter\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\Edwar\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Xamarin.Offline.config"
         ],
@@ -110,8 +110,8 @@
         "frameworks": {
           "netcoreapp3.1": {
             "projectReferences": {
-              "C:\\Users\\Hunter\\Documents\\SENG401\\Comment_Microservice\\Comment_Microservice.csproj": {
-                "projectPath": "C:\\Users\\Hunter\\Documents\\SENG401\\Comment_Microservice\\Comment_Microservice.csproj"
+              "C:\\Users\\Edwar\\Documents\\SENG401\\repos\\Comment_Microservice\\Comment_Microservice.csproj": {
+                "projectPath": "C:\\Users\\Edwar\\Documents\\SENG401\\repos\\Comment_Microservice\\Comment_Microservice.csproj"
               }
             }
           }
@@ -128,6 +128,10 @@
             "EventStore.Client": {
               "target": "Package",
               "version": "[5.0.6, )"
+            },
+            "RavenDB.Client": {
+              "target": "Package",
+              "version": "[4.2.101, )"
             }
           },
           "imports": [

@@ -14,7 +14,7 @@ namespace Comment_Microservice.Aggregates
     {
         Guid _commentId;
 
-        Guid _parentId;
+        Guid? _parentId;
 
         Guid _postId;
 
@@ -27,6 +27,7 @@ namespace Comment_Microservice.Aggregates
         bool _deleted = false;
 
         /*
+         * Creates a new autonomous comment.
          * Calls private ctor first
          * Creates new event, which is then handled by the appropriate method
          */
@@ -36,13 +37,22 @@ namespace Comment_Microservice.Aggregates
         }
 
         /*
+         * Creates a new reply to a comment
+         */
+        public CommentAggregate(Guid commentId, Guid parentId, Guid postId, string content, string username)
+        {
+            Raise(new ReplyToCommentEvent(commentId, parentId, postId, content, username));
+        }
+
+        /*
          * Tells AggregateRoot which On method to call when event raised.
          */
         private CommentAggregate()
         {
             Register<CommentCreatedEvent>(On);
-            Register<CommentEditedEvent>(On);
+            Register<ReplyToCommentEvent>(On);
             Register<CommentDeletedEvent>(On);
+            Register<CommentEditedEvent>(On);
         }
 
         private void On(CommentCreatedEvent e)
@@ -53,6 +63,14 @@ namespace Comment_Microservice.Aggregates
             _username = e.Username;
         }
 
+        private void On(ReplyToCommentEvent e)
+        {
+            _commentId = e.CommentId;
+            _parentId = e.ParentId;
+            _postId = e.PostId;
+            _content = e.Content;
+            _username = e.Username;
+        }
         /*
          * Called by CommandHandler to change the comment context and raise a new event
          */
@@ -74,7 +92,7 @@ namespace Comment_Microservice.Aggregates
          */
         private void checkIfCommentDeleted()
         {
-            if (!_deleted)
+            if (_deleted)
             {
                 throw new Exception("Comment has already been deleted");
             }
