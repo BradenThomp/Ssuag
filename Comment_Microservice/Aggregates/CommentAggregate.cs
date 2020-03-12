@@ -41,6 +41,8 @@ namespace Comment_Microservice.Aggregates
         private CommentAggregate()
         {
             Register<CommentCreatedEvent>(On);
+            Register<CommentEditedEvent>(On);
+            Register<CommentDeletedEvent>(On);
         }
 
         private void On(CommentCreatedEvent e)
@@ -50,5 +52,48 @@ namespace Comment_Microservice.Aggregates
             _content = e.Content;
             _username = e.Username;
         }
+
+        /*
+         * Called by CommandHandler to change the comment context and raise a new event
+         */
+        public void EditComment(string content)
+        {
+            checkIfCommentDeleted();
+
+            Raise(new CommentEditedEvent(_commentId, content));
+        }
+
+        private void On(CommentEditedEvent e)
+        {
+            _content = e.Content;
+            _timesEdited++;
+        }
+
+        /*
+         * Used to ensure comment hasn't been deleted yet
+         */
+        private void checkIfCommentDeleted()
+        {
+            if (!_deleted)
+            {
+                throw new Exception("Comment has already been deleted");
+            }
+        }
+
+        /*
+         * Called by CommandHandler to change the delete flag to true and raise a new event
+         */
+        public void DeleteComment()
+        {
+            checkIfCommentDeleted();
+
+            Raise(new CommentDeletedEvent(_commentId));
+        }
+
+        private void On(CommentDeletedEvent e)
+        {
+            _deleted = true;
+        }
+
     }
 }
