@@ -16,16 +16,16 @@ namespace Comment_Microservice.Commands
 
         public string Username { get; set; }
 
-        public DateTime TimeOfRecieval { get; private set; }
+        public DateTime TimeOfCreation { get; private set; }
 
         public void generateId()
         {
             CommentId = Guid.NewGuid();
         }
 
-        public void generateRecievalTime()
+        public void generateCreationTime()
         {
-            TimeOfRecieval = DateTime.UtcNow;
+            TimeOfCreation = DateTime.UtcNow;
         }
     }
 }

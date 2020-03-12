@@ -29,7 +29,7 @@ namespace Comment_Microservice.Commands.Handlers
                 await repository.Save(newComment);
             });
 
-            Register<ReplyToCommentCommand>(async c =>
+            Register<ReplyToComment>(async c =>
                 {
                     //code executes when a ReplyToCommentCommand is dispatched
                     //Creates a new comment aggregate (which creates a new Event in its ctor)

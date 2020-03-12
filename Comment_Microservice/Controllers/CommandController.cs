@@ -50,18 +50,45 @@ namespace Comment_Microservice.Controllers
         public async Task CreateComment([FromBody] CreateComment createComment) 
         {
             createComment.generateId();
-            createComment.generateRecievalTime();
+            createComment.generateCreationTime();
             //dispatches a new CreateComment Command
             await _dispatcher.Dispatch(createComment);
         }
 
+        /**
+         * Route is api/command/replytocommment
+         * 
+         * When a create comment command is recieved - dispatches the command 
+         */
         [HttpPost]
-        public async Task ReplyToComment([FromBody] ReplyToCommentCommand replyToCommentCommand)
+        public async Task ReplyToComment([FromBody] ReplyToComment replyToComment)
         {
-            await _dispatcher.Dispatch(replyToCommentCommand);
+            replyToComment.generateId();
+            replyToComment.generateCreationTime();
+            await _dispatcher.Dispatch(replyToComment);
         }
 
+        /**
+         * Route is api/command/editcomment
+         * 
+         * When a create comment command is recieved - dispatches the command 
+         */
+        [HttpPost]
+        public async Task EditComment([FromBody] EditComment editComment)
+        {
+            await _dispatcher.Dispatch(editComment);
+        }
 
+        /**
+         * Route is api/command/deletecomment
+         * 
+         * When a create comment command is recieved - dispatches the command 
+         */
+        [HttpPost]
+        public async Task DeleteComment([FromBody] DeleteComment deleteComment)
+        {
+            await _dispatcher.Dispatch(deleteComment);
+        }
 
     }
 }
