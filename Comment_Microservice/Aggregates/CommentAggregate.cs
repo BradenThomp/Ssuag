@@ -12,9 +12,8 @@ namespace Comment_Microservice.Aggregates
     /// </summary>
     public class CommentAggregate : AggregateRoot
     {
-        Guid _commentId;
 
-        Guid? _parentId;
+        Guid _parentId;
 
         Guid _postId;
 
@@ -57,7 +56,7 @@ namespace Comment_Microservice.Aggregates
 
         private void On(CommentCreatedEvent e)
         {
-            _commentId = e.CommentId;
+            Id = e.CommentId;
             _postId = e.PostId;
             _content = e.Content;
             _username = e.Username;
@@ -65,7 +64,7 @@ namespace Comment_Microservice.Aggregates
 
         private void On(ReplyToCommentEvent e)
         {
-            _commentId = e.CommentId;
+            Id = e.CommentId;
             _parentId = e.ParentId;
             _postId = e.PostId;
             _content = e.Content;
@@ -78,7 +77,7 @@ namespace Comment_Microservice.Aggregates
         {
             checkIfCommentDeleted();
 
-            Raise(new CommentEditedEvent(_commentId, content));
+            Raise(new CommentEditedEvent(Id, content));
         }
 
         private void On(CommentEditedEvent e)
@@ -105,7 +104,7 @@ namespace Comment_Microservice.Aggregates
         {
             checkIfCommentDeleted();
 
-            Raise(new CommentDeletedEvent(_commentId));
+            Raise(new CommentDeletedEvent(Id));
         }
 
         private void On(CommentDeletedEvent e)
