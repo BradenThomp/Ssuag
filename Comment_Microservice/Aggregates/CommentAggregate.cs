@@ -12,11 +12,17 @@ namespace Comment_Microservice.Aggregates
     /// </summary>
     public class CommentAggregate : AggregateRoot
     {
-        int _postId;
+        Guid _commentId;
+
+        Guid _parentID;
 
         string _content;
 
+        int _timesEdited = 0;
+
         public string _username;
+
+        bool _deleted = false;
 
         /*
          * Calls private ctor first
