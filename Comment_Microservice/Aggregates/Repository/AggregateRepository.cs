@@ -4,8 +4,11 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace Comment_Microservice.Command.Domain.Repository
+namespace Comment_Microservice.Aggregates.Repository
 {
+    /// <summary>
+    /// Clean interface to interact with EventStore persistent storage
+    /// </summary>
     public class AggregateRepository
     {
         readonly IEventStoreConnection _connection;
@@ -28,9 +31,7 @@ namespace Comment_Microservice.Command.Domain.Repository
 
         public Task Save(IAggregateRoot aggregateRoot)
         {
-            var events = aggregateRoot
-                .GetEvents()
-                .Select(ToEventData);
+            var events = aggregateRoot.GetEvents().Select(ToEventData);
 
             return _connection.AppendToStreamAsync(StreamName(aggregateRoot.GetType(), aggregateRoot.Id), aggregateRoot.Version, events);
         }

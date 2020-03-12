@@ -3,8 +3,11 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace Comment_Microservice.Command.Handlers
+namespace Comment_Microservice.Commands.Handlers
 {
+    /// <summary>
+    /// Receives a command, and begins to execute the associated handler
+    /// </summary>
     public class Dispatcher
     {
         private readonly CommandHandlerMap _map;

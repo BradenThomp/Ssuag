@@ -3,14 +3,14 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace Comment_Microservice.Command
+namespace Comment_Microservice.Commands
 {
     public class CreateComment
     {
 
         public Guid CommentId { get; set; }
-
-        public int PostId { get; set; }
+        
+        public Guid PostId { get; set; }
 
         public string Content { get; set; }
 

@@ -6,7 +6,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Comment_Microservice.Command.Domain.Repository
+namespace Comment_Microservice.Aggregates.Repository
 {
     public static class RepositoryHelper
     {
