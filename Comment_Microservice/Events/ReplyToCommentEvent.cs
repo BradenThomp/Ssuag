@@ -5,6 +5,9 @@ using System.Threading.Tasks;
 
 namespace Comment_Microservice.Events
 {
+    /// <summary>
+    /// Event that creates a new comment, which is replying to a parent comment.
+    /// </summary>
     public class ReplyToCommentEvent
     {
         public Guid CommentId { get; }

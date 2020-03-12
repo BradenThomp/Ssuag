@@ -5,6 +5,10 @@ using System.Threading.Tasks;
 
 namespace Comment_Microservice.Commands.Handlers
 {
+    /// <summary>
+    /// Stores all the relevant command, function pairs for a specific type of command handler, 
+    /// which will inherit from this class.
+    /// </summary>
     public class CommandHandler
     {
         /// <summary>

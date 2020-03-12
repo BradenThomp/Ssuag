@@ -5,6 +5,9 @@ using System.Threading.Tasks;
 
 namespace Comment_Microservice.Events
 {
+    /// <summary>
+    /// Event to create a new standalone comment.
+    /// </summary>
     public class CommentCreatedEvent
     {
         public CommentCreatedEvent(Guid commentId, Guid postId, string content, string username)

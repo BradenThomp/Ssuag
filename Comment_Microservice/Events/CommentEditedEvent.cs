@@ -5,6 +5,9 @@ using System.Threading.Tasks;
 
 namespace Comment_Microservice.Events
 {
+    /// <summary>
+    /// Event that marks which comment was edited, and what the new content is.
+    /// </summary>
     public class CommentEditedEvent
     {
         public CommentEditedEvent(Guid commentId, string content)

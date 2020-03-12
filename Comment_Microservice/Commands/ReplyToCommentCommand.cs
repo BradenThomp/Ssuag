@@ -5,6 +5,9 @@ using System.Threading.Tasks;
 
 namespace Comment_Microservice.Commands
 {
+    /// <summary>
+    /// Stores all contents of the new reply to be created.
+    /// </summary>
     public class ReplyToCommentCommand
     {
         // ID of this comment
