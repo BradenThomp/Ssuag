@@ -8,10 +8,16 @@ namespace Comment_Microservice.Commands
     /// <summary>
     /// Tells microservice to edit a specified comment, and what the new content should be.
     /// </summary>
-    public class EditComment
+    public class EditCommentCommand
     {
-        public Guid CommentId { get; }
+        public Guid CommentId { get; set; }
 
-        public string Content { get; }
+        public string Content { get; set; }
+
+        public EditCommentCommand(Guid commentId, string content)
+        {
+            CommentId = commentId;
+            Content = content;
+        }
     }
 }

@@ -5,7 +5,7 @@ using System.Threading.Tasks;
 
 namespace Comment_Microservice.Commands
 {
-    public class CreateComment
+    public class CreateCommentCommand
     {
 
         public Guid CommentId { get; private set; }
@@ -18,12 +18,21 @@ namespace Comment_Microservice.Commands
 
         public DateTime TimeOfCreation { get; private set; }
 
-        public void generateId()
+        public CreateCommentCommand(string content, string username, Guid postId)
+        {
+            PostId = postId;
+            Content = content;
+            Username = username;
+            GenerateCreationTime();
+            GenerateId();
+        }
+
+        private void GenerateId()
         {
             CommentId = Guid.NewGuid();
         }
 
-        public void generateCreationTime()
+        private void GenerateCreationTime()
         {
             TimeOfCreation = DateTime.UtcNow;
         }

@@ -20,7 +20,7 @@ namespace MicroserviceTestConsole
 
             var commentId = Guid.NewGuid();
 
-            var createComment = new CreateComment{
+            var createComment = new CreateCommentCommand{
                 CommentId = commentId, 
                 PostId = Guid.NewGuid(), 
                 Content = "comment", 
