@@ -1,4 +1,4 @@
-<Project Sdk="Microsoft.NET.Sdk">
+﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
     <OutputType>Exe</OutputType>
@@ -8,10 +8,6 @@
   <ItemGroup>
     <PackageReference Include="EventStore.Client" Version="5.0.6" />
     <PackageReference Include="RavenDB.Client" Version="4.2.101" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <ProjectReference Include="..\Comment_Microservice\Comment_Microservice.csproj" />
   </ItemGroup>
 
 </Project>
