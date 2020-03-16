@@ -1,17 +1,31 @@
-﻿@model PostInspectViewModel
+﻿@model PostInspectViewModel;
+@inject SignInManager<IdentityUser> signInManager;
+@inject UserManager<IdentityUser> userManager;
 
 @{
     ViewData["Title"] = "Inspect Post Page";
     var photoPath = "~/img/uploads/" + Model.Post.PhotoPath;
 }
 
-<img class="card-img-top" src=@photoPath asp-append-version="true"/>
+<img class="card-img-top" src=@photoPath asp-append-version="true" />
 
 <form asp-action="PostComment" method="post">
     <input type="hidden" name="Post.Id" value=@Model.Post.Id />
+    @{
+        try
+        {
+            var user = await userManager.GetUserAsync(User);
+            <input type="hidden" name="UserName" value=@user.UserName />
+        }
+        catch (Exception e)
+        {
+
+        }
+    }
     <div class="form-group">
         <label for="newCommentContent">Post A Comment:</label>
-        <input class="form-control" name="newCommentContent" />
+        <input class="form-control" name="newCommentContent" required />
+        <span asp-validation-for="newCommentContent" class="text-danger"></span>
     </div>
     <div class="text-center panel-body">
         <button type="submit" class="btn btn-sm btn-primary">Post</button>

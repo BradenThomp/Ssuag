@@ -111,15 +111,11 @@ namespace _401Project.Controllers
                     model.Photo.CopyTo(new FileStream(filePath, FileMode.Create));
                 }
 
-                //Gets current user username
-                var claimsIdentity = (ClaimsIdentity)this.User.Identity;
-                var userName = claimsIdentity.FindFirst(System.Security.Claims.ClaimTypes.Name);
-
                 Post newPost = new Post
                 {
                     Id = Guid.NewGuid(),
                     PhotoPath = uniqueFileName,
-                    UserName = userName.ToString(),
+                    UserName = model.UserName,
                     TimePosted = DateTime.UtcNow,
                     Tags = new List<Tag>()
                 };
@@ -140,18 +136,16 @@ namespace _401Project.Controllers
         }
 
         [HttpPost]
+        [Authorize]
         public async Task<IActionResult> PostComment(PostInspectViewModel vm)
         {
-            //Gets current user username
-            var claimsIdentity = (ClaimsIdentity)this.User.Identity;
-            var userName = claimsIdentity.FindFirst(System.Security.Claims.ClaimTypes.Name);
 
 
             CreateCommentDto comment = new CreateCommentDto
             {
                 Content = vm.newCommentContent,
                 PostId = vm.Post.Id,
-                Username = userName.ToString()
+                Username = vm.UserName
             };
 
             try
@@ -172,7 +166,6 @@ namespace _401Project.Controllers
                 //ADD ERROR HERE
                 return RedirectToAction("inspect", new { id = vm.Post.Id });
             }
-
             return RedirectToAction("inspect", new { id = vm.Post.Id });
         }
     }
