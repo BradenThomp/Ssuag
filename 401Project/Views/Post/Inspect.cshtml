@@ -7,6 +7,17 @@
 
 <img class="card-img-top" src=@photoPath asp-append-version="true"/>
 
+<form asp-action="PostComment" method="post">
+    <input type="hidden" name="Post.Id" value=@Model.Post.Id />
+    <div class="form-group">
+        <label for="newCommentContent">Post A Comment:</label>
+        <input class="form-control" name="newCommentContent" />
+    </div>
+    <div class="text-center panel-body">
+        <button type="submit" class="btn btn-sm btn-primary">Post</button>
+    </div>
+</form>
+
 <!--
     send query to microservice with post ID along protobuff
     if microservice returns HTML for how comments are to be displayed,

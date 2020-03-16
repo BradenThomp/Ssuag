@@ -1,4 +1,5 @@
-﻿using _401Project.Models;
+﻿using _401Project.DataTransferObjects;
+using _401Project.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -6,9 +7,11 @@ using System.Threading.Tasks;
 
 namespace _401Project.ViewModels
 {
-    public class PostInspectViewModel
-    {
-        public Post Post { get; set; }
+	public class PostInspectViewModel
+	{
+		public Post Post { get; set; }
+
+		public string newCommentContent { get; set; }
 		
 		public List<Comment> commentsExample {get; set;}
 		

@@ -11,6 +11,10 @@ using Microsoft.AspNetCore.Authorization;
 using System.Security.Claims;
 using _401Project.Helpers.DataStructures;
 using _401Project.Models.Repository;
+using System.Net.Http;
+using Newtonsoft.Json;
+using System.Text;
+using _401Project.DataTransferObjects;
 
 // For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
 
@@ -69,7 +73,7 @@ namespace _401Project.Controllers
         /// <summary>
         /// Returns an inspected view of a post where Id is the post to inspect -- This can also be refered to as the page that contains comments.
         /// </summary>
-        public IActionResult Inspect(int Id)
+        public IActionResult Inspect(Guid Id)
         {
             PostInspectViewModel Model = new PostInspectViewModel
             {
@@ -113,6 +117,7 @@ namespace _401Project.Controllers
 
                 Post newPost = new Post
                 {
+                    Id = Guid.NewGuid(),
                     PhotoPath = uniqueFileName,
                     UserName = userName.ToString(),
                     TimePosted = DateTime.UtcNow,
@@ -132,6 +137,43 @@ namespace _401Project.Controllers
             }
 
             return View();
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> PostComment(PostInspectViewModel vm)
+        {
+            //Gets current user username
+            var claimsIdentity = (ClaimsIdentity)this.User.Identity;
+            var userName = claimsIdentity.FindFirst(System.Security.Claims.ClaimTypes.Name);
+
+
+            CreateCommentDto comment = new CreateCommentDto
+            {
+                Content = vm.newCommentContent,
+                PostId = vm.Post.Id,
+                Username = userName.ToString()
+            };
+
+            try
+            {
+                using (var httpClient = new HttpClient())
+                {
+                    StringContent content = new StringContent(JsonConvert.SerializeObject(comment), Encoding.UTF8, "application/json");
+
+                    using (var response = await httpClient.PostAsync("https://localhost:44332/api/command/createcomment", content))
+                    {
+
+                    }
+                }
+            }
+            catch (Exception exception)
+            {
+                Console.WriteLine(exception);
+                //ADD ERROR HERE
+                return RedirectToAction("inspect", new { id = vm.Post.Id });
+            }
+
+            return RedirectToAction("inspect", new { id = vm.Post.Id });
         }
     }
 }

@@ -24,7 +24,7 @@ namespace _401Project.Models.Repository
             return post;
         }
 
-        public Post Delete(int Id)
+        public Post Delete(Guid Id)
         {
             throw new NotImplementedException();
         }
@@ -35,7 +35,7 @@ namespace _401Project.Models.Repository
             return posts.AsNoTracking();
         }
 
-        public Post ReadPost(int Id)
+        public Post ReadPost(Guid Id)
         {
             return _context.Posts.Find(Id);
         }
