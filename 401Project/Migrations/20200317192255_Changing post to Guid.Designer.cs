@@ -3,15 +3,17 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using _401Project.Models.Context;
 
 namespace _401Project.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class UserDbContextModelSnapshot : ModelSnapshot
+    [Migration("20200317192255_Changing post to Guid")]
+    partial class ChangingposttoGuid
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder

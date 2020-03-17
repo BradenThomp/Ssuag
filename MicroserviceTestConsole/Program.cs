@@ -16,7 +16,7 @@ namespace MicroserviceTestConsole
 
         static async Task AsyncMain()
         {
-            var dispatcher = await SetupDispatcher();
+            /**var dispatcher = await SetupDispatcher();
 
             var commentId = Guid.NewGuid();
 
@@ -31,10 +31,10 @@ namespace MicroserviceTestConsole
 
             Console.WriteLine(JsonConvert.SerializeObject(createComment));
 
-            Console.ReadLine();
+            Console.ReadLine();*/
         }
 
-        private static async Task<Dispatcher> SetupDispatcher()
+        /**private static async Task<Dispatcher> SetupDispatcher()
         {
             var eventStoreConnection = EventStoreConnection.Create(
                 ConnectionSettings.Default,
@@ -47,6 +47,6 @@ namespace MicroserviceTestConsole
 
             return new Dispatcher(commandHandlerMap);
 
-        }
+        }*/
     }
 }
