@@ -8,8 +8,8 @@ namespace Comment_Microservice.Commands
     /// <summary>
     /// Tells microservice which comment to delete
     /// </summary>
-    public class DeleteComment
+    public class DeleteCommentDto
     {
-        public Guid CommentId { get; }
+        public Guid CommentId { get; set; }
     }
 }

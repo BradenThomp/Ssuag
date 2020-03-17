@@ -71,9 +71,9 @@ namespace Comment_Microservice.Controllers
          * When a create comment command is recieved - dispatches the command 
          */
         [HttpPost]
-        public async Task DeleteComment([FromBody] DeleteComment deleteComment)
+        public async Task DeleteComment([FromBody] DeleteCommentDto data)
         {
-            await _dispatcher.Dispatch(deleteComment);
+            await _dispatcher.Dispatch(new DeleteCommentCommand(data.CommentId));
         }
 
     }

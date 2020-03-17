@@ -51,7 +51,7 @@ namespace Comment_Microservice.Commands.Handlers
                 await repository.Save(comment);
             });
 
-            Register<DeleteComment>(async c =>
+            Register<DeleteCommentCommand>(async c =>
             {
                 //code executes when a DeleteComment Command is dispatched
                 //Pulls a copy of the comment from the repository, changes the delete flag to true and
