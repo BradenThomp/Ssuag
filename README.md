@@ -20,8 +20,13 @@ Run Microservice, Projection Manager, and MVC
 
 ## Contributors
 Braden Thompson
+
 Nathan Sehn
+
 Quinn Ceplis
+
 Eddy Gu
+
 Hunter Reboul
+
 Ethan Schafers
