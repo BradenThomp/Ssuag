@@ -38,7 +38,7 @@ namespace Comment_Microservice.Aggregates
         /*
          * Creates a new reply to a comment
          */
-        public CommentAggregate(Guid commentId, Guid parentId, Guid postId, string content, string username)
+        public CommentAggregate(Guid commentId, Guid parentId, Guid postId, string content, string username) : this()
         {
             Raise(new ReplyToCommentEvent(commentId, parentId, postId, content, username));
         }
