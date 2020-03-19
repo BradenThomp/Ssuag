@@ -1,6 +1,18 @@
 # Ssuag
 
-Suagg is a cloud based web service for uploading and viewing memes.  HTML pages are rendered server side using an MVC architectural pattern.  Comments are implemented via a microservice with CQRS and Event Sourcing.  Data Transmission between the main MVC application and comment microservice is in JSON format through REST api calls.  User data is stored in an SQL database using entitity and identity framework core.  All comment events are saved to event store. A projection manager listens for new events which asyncronously updates the projections stored in RavenDB.  All comment data is queried through the microservice and RavenDB.
+Suagg is a cloud based web service for uploading and viewing memes.  The architecture of this project consists of an MVC Application, Comment Microservice and Projection Manager.
+
+# MVC Application
+
+HTML pages are rendered server side using an MVC architectural pattern.  The MVC application is responsible for Post and User data which is stored in an SQL database.  Entity framework core was used for all database access with Identity Framework Core managing the user information.  Data relating to a post's comments is either commanded or queried through the Comment Microservice.  This is done through REST api calls to the microservice.
+
+# Comment Microservice
+
+Comments are implemented via a microservice with CQRS and Event Sourcing.  All data transmission is done in JSON format. All commands generate events which are then stored into Event Store.  Comment Data is then be queried through RavenDB.
+
+# Projection Manager
+
+The Projection Manager subscribes to the events that occur in the Comment Microservice.  Events are pulled out of Event Stores event stream and asynchronously projected into RavenDB.
 
 ## Installation
 
