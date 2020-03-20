@@ -7,7 +7,11 @@
     var photoPath = "~/img/uploads/" + Model.Post.PhotoPath;
 }
 
+<p>Posted by @Model.Post.UserName - @Model.Post.TimePosted</p>
+
 <img class="card-img-top" src=@photoPath asp-append-version="true" />
+
+<h6 style="margin-top: 40px">Comments</h6>
 
 <form asp-action="PostComment" method="post">
     <input type="hidden" name="Post.Id" value=@Model.Post.Id />
@@ -23,12 +27,11 @@
         }
     }
     <div class="form-group">
-        <label for="newCommentContent">Post A Comment:</label>
-        <input class="form-control" name="newCommentContent" required />
+        <div class="input-group-append">
+            <input  placeholder="Add a comment" class="form-control" name="newCommentContent" required />
+            <button type="submit" class="btn btn-outline-secondary">Post</button>
+        </div>
         <span asp-validation-for="newCommentContent" class="text-danger"></span>
-    </div>
-    <div class="text-center panel-body">
-        <button type="submit" class="btn btn-sm btn-primary">Post</button>
     </div>
 </form>
 
@@ -38,4 +41,37 @@
     render here
 -->
 
-@Html.Raw(Model.CommentHTML)
+@functions {
+    void Render(Comment parent, int depth)
+    {
+        string offset = "";
+
+        for (int i = 0; i < depth; i++)
+        {
+            offset += "-";
+        }
+
+        <p style="margin-left:@(depth)px; margin-bottom: 3px; padding-bottom: 0px; color: #808080;">@parent.UserName</p>
+        <p style="margin-left:@(depth)px">@parent.Content</p>
+
+        foreach (var comment in Model.Comments)
+        {
+            if (!string.IsNullOrEmpty(comment.ParentId))
+            {
+                if (comment.ParentId.Equals(parent.Id))
+                {
+                    Render(comment, depth + 30);
+                }
+            }
+        }
+    }
+
+}
+
+@foreach (var comment in Model.Comments)
+{
+    if (string.IsNullOrEmpty(comment.ParentId))
+    {
+        Render(comment, 0);
+    }
+}

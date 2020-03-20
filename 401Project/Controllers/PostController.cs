@@ -75,10 +75,38 @@ namespace _401Project.Controllers
         /// </summary>
         public IActionResult Inspect(Guid Id)
         {
+            string requestString = "https://localhost:44332/api/query/getcommentsbypost?PostId=" + Id.ToString();
+            List<Comment> comments = null;
+
             PostInspectViewModel Model = new PostInspectViewModel
             {
                 Post = PostRepository.ReadPost(Id)
             };
+
+            var client = new HttpClient();
+            var task = client.GetAsync(requestString).ContinueWith((taskwithresponse) =>
+            {
+                  var response = taskwithresponse.Result;
+                  var jsonString = response.Content.ReadAsStringAsync();
+                  jsonString.Wait();
+                  comments = JsonConvert.DeserializeObject<List<Comment>>(jsonString.Result);
+            });
+
+            task.Wait();
+
+            Console.WriteLine("Recieved Comments");
+            foreach(Comment c in comments)
+            {
+                Console.WriteLine(c.Content);
+            }
+
+            Model.Comments = comments;
+
+            foreach(Comment c in Model.Comments)
+            {
+                Console.WriteLine(c.Content);
+            }
+
             return View(Model);
         }
 

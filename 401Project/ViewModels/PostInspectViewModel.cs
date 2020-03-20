@@ -15,13 +15,13 @@ namespace _401Project.ViewModels
 		public string UserName { get; set; }
 		public string newCommentContent { get; set; }
 		
-		public List<Comment> commentsExample {get; set;}
+		public List<Comment> Comments {get; set;}
 		
 		public string CommentHTML;
 		
 		public PostInspectViewModel()
 		{
-			commentsExample = new List<Comment>();
+			/**commentsExample = new List<Comment>();
 			commentsExample.Add(new Comment{CommentId = 1, ParentId = null, Content="hello"});
 			commentsExample.Add(new Comment{CommentId = 2, ParentId = 1, Content="there"});
 			commentsExample.Add(new Comment{CommentId = 3, ParentId = null, Content="parent"});
@@ -29,7 +29,7 @@ namespace _401Project.ViewModels
 			commentsExample.Add(new Comment{CommentId = 5, ParentId = 3, Content="child"});
 			commentsExample.Add(new Comment{CommentId = 6, ParentId = 4, Content="kenobi"});
 			
-			CommentHTML = Comment.CommentListToHTML(commentsExample);
+			CommentHTML = Comment.CommentListToHTML(commentsExample);*/
 
 		}
     }

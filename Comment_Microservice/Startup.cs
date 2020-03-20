@@ -5,6 +5,7 @@ using System.Net;
 using System.Threading.Tasks;
 using Comment_Microservice.Aggregates.Repository;
 using Comment_Microservice.Commands.Handlers;
+using Comment_Microservice.Queries;
 using EventStore.ClientAPI;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
@@ -45,6 +46,10 @@ namespace Comment_Microservice
 
             //inject mapped commands into dispatcher
             services.AddSingleton<Dispatcher>(new Dispatcher(commandHandlerMap));
+
+            services.AddSingleton<RavenDBConnection>(new RavenDBConnection("CommentMicroservice"));
+
+            services.AddTransient<RavenDBRepository>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
