@@ -23,7 +23,7 @@
         }
         catch (Exception e)
         {
-
+		
         }
     }
     <div class="form-group">
@@ -44,26 +44,31 @@
 @functions {
     void Render(Comment parent, int depth)
     {
-        string offset = "";
+		string bgcolor = "";
+		if(depth%2 == 1)
+		{
+			bgcolor = "White";
+		}
+		else
+		{
+			bgcolor = "LightGrey";
+		}
+	
+		<div style="margin-left:40px; background-color:@(bgcolor); padding-bottom: 10px; padding-top: 10px; margin-top: 10px; margin-bottom: 10px;">
+        <p style="margin-left:40px; margin-bottom: 5px; padding-bottom: 0px; color: #808080;">@parent.UserName</p>
+        <p style="margin-left:40px; margin-bottom: 5px; padding-bottom: 0px;">@parent.Content</p>
 
-        for (int i = 0; i < depth; i++)
-        {
-            offset += "-";
-        }
-
-        <p style="margin-left:@(depth)px; margin-bottom: 3px; padding-bottom: 0px; color: #808080;">@parent.UserName</p>
-        <p style="margin-left:@(depth)px">@parent.Content</p>
-
-        foreach (var comment in Model.Comments)
+        @foreach (var comment in Model.Comments)
         {
             if (!string.IsNullOrEmpty(comment.ParentId))
             {
                 if (comment.ParentId.Equals(parent.Id))
                 {
-                    Render(comment, depth + 30);
+                    Render(comment, depth + 1);
                 }
             }
         }
+		</div>
     }
 
 }
