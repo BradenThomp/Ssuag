@@ -10,27 +10,19 @@ namespace _401Project.ViewModels
 {
 	public class PostInspectViewModel
 	{
+		/**
+		 * Get Data
+		 */
 		public Post Post { get; set; }
+		public List<Comment> Comments { get; set; }
+		public bool CommentsLoaded;
 
-		public string UserName { get; set; }
-		public string newCommentContent { get; set; }
+		/**
+		 * Post Data
+		 */
+		public Guid CommentRepliedToId { get; set; }
+		public string CurrentUserName { get; set; }
+		public string NewCommentContent { get; set; }
 		
-		public List<Comment> Comments {get; set;}
-		
-		public string CommentHTML;
-		
-		public PostInspectViewModel()
-		{
-			/**commentsExample = new List<Comment>();
-			commentsExample.Add(new Comment{CommentId = 1, ParentId = null, Content="hello"});
-			commentsExample.Add(new Comment{CommentId = 2, ParentId = 1, Content="there"});
-			commentsExample.Add(new Comment{CommentId = 3, ParentId = null, Content="parent"});
-			commentsExample.Add(new Comment{CommentId = 4, ParentId = 2, Content="general"});
-			commentsExample.Add(new Comment{CommentId = 5, ParentId = 3, Content="child"});
-			commentsExample.Add(new Comment{CommentId = 6, ParentId = 4, Content="kenobi"});
-			
-			CommentHTML = Comment.CommentListToHTML(commentsExample);*/
-
-		}
     }
 }

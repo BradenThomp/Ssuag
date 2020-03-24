@@ -7,76 +7,135 @@
     var photoPath = "~/img/uploads/" + Model.Post.PhotoPath;
 }
 
+<!--
+    Render Post Image
+-->
 <p>Posted by @Model.Post.UserName - @Model.Post.TimePosted</p>
 
 <img class="card-img-top" src=@photoPath asp-append-version="true" />
 
-<h6 style="margin-top: 40px">Comments</h6>
-
-<form asp-action="PostComment" method="post">
-    <input type="hidden" name="Post.Id" value=@Model.Post.Id />
-    @{
-        try
-        {
-            var user = await userManager.GetUserAsync(User);
-            <input type="hidden" name="UserName" value=@user.UserName />
-        }
-        catch (Exception e)
-        {
-		
-        }
-    }
-    <div class="form-group">
-        <div class="input-group-append">
-            <input  placeholder="Add a comment" class="form-control" name="newCommentContent" required />
-            <button type="submit" class="btn btn-outline-secondary">Post</button>
-        </div>
-        <span asp-validation-for="newCommentContent" class="text-danger"></span>
-    </div>
-</form>
-
-<!--
-    send query to microservice with post ID along protobuff
-    if microservice returns HTML for how comments are to be displayed,
-    render here
--->
-
-@functions {
-    void Render(Comment parent, int depth)
-    {
-		string bgcolor = "";
-		if(depth%2 == 1)
-		{
-			bgcolor = "White";
-		}
-		else
-		{
-			bgcolor = "LightGrey";
-		}
-	
-		<div style="margin-left:40px; background-color:@(bgcolor); padding-bottom: 10px; padding-top: 10px; margin-top: 10px; margin-bottom: 10px;">
-        <p style="margin-left:40px; margin-bottom: 5px; padding-bottom: 0px; color: #808080;">@parent.UserName</p>
-        <p style="margin-left:40px; margin-bottom: 5px; padding-bottom: 0px;">@parent.Content</p>
-
-        @foreach (var comment in Model.Comments)
-        {
-            if (!string.IsNullOrEmpty(comment.ParentId))
-            {
-                if (comment.ParentId.Equals(parent.Id))
-                {
-                    Render(comment, depth + 1);
-                }
-            }
-        }
-		</div>
-    }
-
-}
-
-@foreach (var comment in Model.Comments)
+@if(Model.CommentsLoaded)
 {
-    if (string.IsNullOrEmpty(comment.ParentId))
-    {
-        Render(comment, 0);
-    }
+	<h6 style="margin-top: 40px">Comments</h6>
+	
+	<!--
+		Render Form for creating new comment
+	-->
+	<form asp-action="PostComment" method="post">
+		<input type="hidden" name="Post.Id" value=@Model.Post.Id />
+		@{
+			try
+			{
+				var user = await userManager.GetUserAsync(User);
+				<input type="hidden" name="CurrentUserName" value=@user.UserName />
+			}
+			catch (Exception e)
+			{
+
+			}
+		}
+		<div class="form-group">
+			<div class="input-group-append">
+				<input placeholder="Add a comment" class="form-control" name="NewCommentContent" required />
+				<button style="width:200px; padding-left:10px;"type="submit" class="btn btn-outline-secondary">Post Comment</button>
+			</div>
+			<span asp-validation-for="NewCommentContent" class="text-danger"></span>
+		</div>
+	</form>
+
+	<!--
+		Render all comments -- match parent and children and add form for replying to the comment
+	-->
+
+	@functions {
+		async Task Render(Comment parent, int depth)
+		{
+			string bgcolor = "";
+			string leftmargin = "";
+			if (depth % 2 == 1)
+			{
+				bgcolor = "White";
+			}
+			else
+			{
+				bgcolor = "LightGrey";
+			}
+
+			if (depth == 0)
+			{
+				leftmargin = "0px";
+			}
+			else
+			{
+				leftmargin = "40px";
+			}
+			<div style="margin-left:@(leftmargin); background-color:@(bgcolor); padding-bottom: 10px; padding-top: 10px; margin-top: 10px; margin-bottom: 10px;">
+				<p style="margin-left:40px; margin-bottom: 5px; padding-bottom: 0px; color: #808080;">@parent.UserName</p>
+				<p style="margin-left:40px; margin-bottom: 5px; padding-bottom: 0px;">@parent.Content</p>
+				<!--
+					Drop Down Menu for replying to comments
+				-->
+				<div class="dropdown">
+					<a style="margin-left:40px;  margin-bottom: 5px; padding-bottom: 0px;" class="dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown">Reply<span class="caret"></span></a>
+					<div class="dropdown-menu">
+						<form class="px-4 py-3" asp-action="ReplyToComment" method="post">
+							<input type="hidden" name="Post.Id" value=@Model.Post.Id />
+							@{
+								try
+								{
+									var user = await userManager.GetUserAsync(User);
+									<input type="hidden" name="CurrentUserName" value=@user.UserName />
+								}
+								catch (Exception e)
+								{
+
+								}
+							}
+							<div class="form-group text-center">
+								<div class="input-group">
+									<input placeholder="Reply to comment" class="form-control" name="NewCommentContent" required />
+									<input type="hidden" name="CommentRepliedToId" value=@parent.Id />
+								</div>
+								<div class="dropdown-divider"></div>
+								<button type="submit" class="btn btn-outline-secondary text-center">Post Comment</button>
+								<span asp-validation-for="NewCommentContent" class="text-danger"></span>
+							</div>
+						</form>
+					</div>
+				</div>
+				<!--
+					Render Children
+				-->
+				@foreach (var comment in Model.Comments)
+				{
+					if (!string.IsNullOrEmpty(comment.ParentId))
+					{
+						if (comment.ParentId.Equals(parent.Id))
+						{
+							await Render(comment, depth + 1);
+						}
+					}
+				}
+			</div>
+		}
+
+	}
+
+	<!--
+		Renders all root comments with children
+	-->
+	if(Model.Comments != null)
+	{
+		foreach (var comment in Model.Comments)
+		{
+			if (string.IsNullOrEmpty(comment.ParentId))
+			{
+				await Render(comment, 0);
+			}
+		}
+	}
+}
+else
+{
+	<p>Comments could not be loaded. To view comments, please try again later.</p>
 }

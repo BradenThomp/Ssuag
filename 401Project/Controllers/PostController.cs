@@ -77,35 +77,41 @@ namespace _401Project.Controllers
         {
             string requestString = "https://localhost:44332/api/query/getcommentsbypost?PostId=" + Id.ToString();
             List<Comment> comments = null;
+			bool commentsLoaded = true;
 
             PostInspectViewModel Model = new PostInspectViewModel
             {
                 Post = PostRepository.ReadPost(Id)
             };
 
-            var client = new HttpClient();
-            var task = client.GetAsync(requestString).ContinueWith((taskwithresponse) =>
+            try
             {
-                  var response = taskwithresponse.Result;
-                  var jsonString = response.Content.ReadAsStringAsync();
-                  jsonString.Wait();
-                  comments = JsonConvert.DeserializeObject<List<Comment>>(jsonString.Result);
-            });
+                var client = new HttpClient();
+                var task = client.GetAsync(requestString).ContinueWith((taskwithresponse) =>
+                {
+                    try
+                    {
+                        var response = taskwithresponse.Result;
+                        var jsonString = response.Content.ReadAsStringAsync();
+                        jsonString.Wait();
+                        comments = JsonConvert.DeserializeObject<List<Comment>>(jsonString.Result);
+                    }
+                    catch (Exception e)
+                    {
+						commentsLoaded = false;
+                    }
 
-            task.Wait();
+                });
 
-            Console.WriteLine("Recieved Comments");
-            foreach(Comment c in comments)
+                task.Wait();
+            }
+            catch(Exception e)
             {
-                Console.WriteLine(c.Content);
+				commentsLoaded = false;
             }
 
             Model.Comments = comments;
-
-            foreach(Comment c in Model.Comments)
-            {
-                Console.WriteLine(c.Content);
-            }
+			Model.CommentsLoaded = commentsLoaded;
 
             return View(Model);
         }
@@ -163,6 +169,9 @@ namespace _401Project.Controllers
             return View();
         }
 
+        /// <summary>
+        /// Takes user input from postnspectviewmodel to create a new CreateCommentDto which is then sent to the microservice
+        /// </summary>
         [HttpPost]
         [Authorize]
         public async Task<IActionResult> PostComment(PostInspectViewModel vm)
@@ -171,9 +180,9 @@ namespace _401Project.Controllers
 
             CreateCommentDto comment = new CreateCommentDto
             {
-                Content = vm.newCommentContent,
+                Content = vm.NewCommentContent,
                 PostId = vm.Post.Id,
-                Username = vm.UserName
+                Username = vm.CurrentUserName
             };
 
             try
@@ -191,7 +200,43 @@ namespace _401Project.Controllers
             catch (Exception exception)
             {
                 Console.WriteLine(exception);
-                //ADD ERROR HERE
+                //TODO ADD ERROR HERE
+                return RedirectToAction("inspect", new { id = vm.Post.Id });
+            }
+            return RedirectToAction("inspect", new { id = vm.Post.Id });
+        }
+
+        /// <summary>
+        /// Takes user input from postnspectviewmodel to create a new ReplyToCommentDto which is then sent to the microservice
+        /// </summary>
+        [HttpPost]
+        [Authorize]
+        public async Task<IActionResult> ReplyToComment(PostInspectViewModel vm)
+        {
+            ReplyToCommentDto comment = new ReplyToCommentDto
+            {
+                ParentId = vm.CommentRepliedToId,
+                Content = vm.NewCommentContent,
+                PostId = vm.Post.Id,
+                Username = vm.CurrentUserName
+            };
+
+            try
+            {
+                using (var httpClient = new HttpClient())
+                {
+                    StringContent content = new StringContent(JsonConvert.SerializeObject(comment), Encoding.UTF8, "application/json");
+
+                    using (var response = await httpClient.PostAsync("https://localhost:44332/api/command/replytocomment", content))
+                    {
+
+                    }
+                }
+            }
+            catch (Exception exception)
+            {
+                Console.WriteLine(exception);
+                //TODO ADD ERROR HERE
                 return RedirectToAction("inspect", new { id = vm.Post.Id });
             }
             return RedirectToAction("inspect", new { id = vm.Post.Id });
