@@ -18,5 +18,8 @@ namespace _401Project.Models
 
 		public string Content { get; set; }
 		
+		public int TimesEdited { get; set; }
+
+		public bool Deleted { get; set; }
 	}
 }

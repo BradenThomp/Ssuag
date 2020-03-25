@@ -15,6 +15,7 @@ namespace ProjectionManager
 
             var projections = new List<IProjection>
             {
+                new CommentProjection(dbConnection)
             };
 
             var projectionManager = new ProjectionManager(
