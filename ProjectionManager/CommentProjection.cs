@@ -1,24 +1,24 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using Comment_Microservice.Events;
 using _401Project.Models;
+using Comment_Microservice.Events;
 
 namespace ProjectionManager
 {
-    class CommentProjection : Projection
+    internal class CommentProjection : Projection
     {
-        public CommentProjection(DBConnection dbConnection)
+        public CommentProjection(RavenDBConnection dbConnection)
         {
-            Register<CommentCreatedEvent>(e =>
+            When<CommentCreatedEvent>(e =>
             {
                 using (var session = dbConnection.Connect())
                 {
                     session.Store(new Comment
                     {
                         Id = e.CommentId.ToString(),
-                        ParentId = e.CommentId.ToString(),
                         PostId = e.PostId.ToString(),
+                        ParentId = null,
                         Content = e.Content,
                         UserName = e.Username
                     });
@@ -29,19 +29,17 @@ namespace ProjectionManager
                 Console.WriteLine($"Comment created: {e.CommentId}");
             });
 
-            Register<ReplyToCommentEvent>(e =>
+            When<ReplyToCommentEvent>(e =>
             {
                 using (var session = dbConnection.Connect())
                 {
                     session.Store(new Comment
                     {
                         Id = e.CommentId.ToString(),
-                        ParentId = e.ParentId.ToString(),
                         PostId = e.PostId.ToString(),
+                        ParentId = e.ParentId.ToString(),
                         Content = e.Content,
-                        UserName = e.Username,
-                        TimesEdited = 0,
-                        Deleted = false
+                        UserName = e.Username
                     });
 
                     session.SaveChanges();
@@ -49,7 +47,7 @@ namespace ProjectionManager
                 Console.WriteLine($"Comment {e.CommentId} replied to comment {e.ParentId}");
             });
 
-            Register<CommentDeletedEvent>(e =>
+            /**When<CommentDeletedEvent>(e =>
             {
                 using (var session = dbConnection.Connect())
                 {
@@ -62,7 +60,7 @@ namespace ProjectionManager
                 Console.WriteLine($"Comment deleted: {e.CommentId}");
             });
 
-            Register<CommentEditedEvent>(e =>
+            When<CommentEditedEvent>(e =>
             {
                 using (var session = dbConnection.Connect())
                 {
@@ -75,7 +73,7 @@ namespace ProjectionManager
                     session.SaveChanges();
                 }
                 Console.WriteLine($"Comment edited: {e.CommentId}");
-            });
+            });*/
         }
     }
 }

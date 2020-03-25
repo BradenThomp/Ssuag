@@ -8,7 +8,7 @@ namespace ProjectionManager
     {
         readonly List<EventHandler> _handlers = new List<EventHandler>();
 
-        protected void Register<T>(Action<T> when)
+        protected void When<T>(Action<T> when)
         {
             _handlers.Add(new EventHandler { EventType = typeof(T).Name, Handler = e => when((T)e) });
         }

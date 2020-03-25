@@ -1,32 +1,24 @@
 ﻿using System;
 using System.Collections.Generic;
 using EventStore.ClientAPI;
-using EventStore.Projections.Core;
 
 namespace ProjectionManager
 {
     class ProjectionManager
     {
-        public class ProjectionState
-        {
-            public string Id { get; set; }
-
-            public long CommitPosition { get; set; }
-
-            public long PreparePosition { get; set; }
-        }
-
         readonly IEventStoreConnection _eventStoreConnection;
+
         readonly List<IProjection> _projections;
-        readonly DBConnection _dbConnection;
+
+        readonly RavenDBConnection _dbConnection;
 
         public ProjectionManager(
             IEventStoreConnection eventStoreConnection,
-            List<IProjection> projections,
-            DBConnection dbConnection)
+            RavenDBConnection dbConnection,
+            List<IProjection> projections)
         {
-            _eventStoreConnection = eventStoreConnection;
             _projections = projections;
+            _eventStoreConnection = eventStoreConnection;
             _dbConnection = dbConnection;
         }
 
@@ -51,20 +43,21 @@ namespace ProjectionManager
 
         Action<EventStoreCatchUpSubscription> LiveProcessingStarted(IProjection projection)
         {
-            return s => Console.WriteLine($"Projection {projection.GetType().Name} has caught up, live processing started.");
+            return s => Console.WriteLine($"Projection {projection.GetType().Name} has caught up, now processing live");
         }
 
         Action<EventStoreCatchUpSubscription, ResolvedEvent> EventAppeared(IProjection projection)
         {
-            return (d, e) =>
+            return (s, e) =>
             {
-                if (projection.CanHandle(e.Event.EventType))
+                if (!projection.CanHandle(e.Event.EventType))
                 {
                     return;
                 }
 
-                var deserializedEvent = e.OriginalEvent;
+                var deserializedEvent = e.Deserialize();
                 projection.Handle(e.Event.EventType, deserializedEvent);
+
                 UpdatePosition(projection.GetType(), e.OriginalPosition.Value);
             };
         }
@@ -79,9 +72,9 @@ namespace ProjectionManager
                 {
                     return null;
                 }
+
                 return new Position(state.CommitPosition, state.PreparePosition);
             }
-            
         }
 
         void UpdatePosition(Type projection, Position position)
@@ -89,6 +82,7 @@ namespace ProjectionManager
             using (var session = _dbConnection.Connect())
             {
                 var state = session.Load<ProjectionState>(projection.Name);
+
                 if (state == null)
                 {
                     session.Store(new ProjectionState
@@ -103,8 +97,18 @@ namespace ProjectionManager
                     state.CommitPosition = position.CommitPosition;
                     state.PreparePosition = position.PreparePosition;
                 }
+
                 session.SaveChanges();
             }
         }
+    }
+
+    public class ProjectionState
+    {
+        public string Id { get; set; }
+
+        public long CommitPosition { get; set; }
+
+        public long PreparePosition { get; set; }
     }
 }

@@ -14,7 +14,7 @@ using _401Project.Models.Repository;
 using System.Net.Http;
 using Newtonsoft.Json;
 using System.Text;
-using _401Project.DataTransferObjects;
+using Comment_Microservice.DataTransferObjects;
 
 // For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
 

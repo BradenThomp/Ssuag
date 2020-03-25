@@ -7,9 +7,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MVC", "401Project\MVC.cspro
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Comment_Microservice", "Comment_Microservice\Comment_Microservice.csproj", "{BC8B9121-A0F1-4775-A3B5-E0FC5232633C}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MicroserviceTestConsole", "MicroserviceTestConsole\MicroserviceTestConsole.csproj", "{AC451915-9486-479B-BF14-D913328A8ACE}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ProjectionManager", "ProjectionManager\ProjectionManager.csproj", "{0C0ED5AF-3410-405C-A6B9-D190DF75A476}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ProjectionManager", "ProjectionManager\ProjectionManager.csproj", "{0C0ED5AF-3410-405C-A6B9-D190DF75A476}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -25,10 +23,6 @@ Global
 		{BC8B9121-A0F1-4775-A3B5-E0FC5232633C}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{BC8B9121-A0F1-4775-A3B5-E0FC5232633C}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{BC8B9121-A0F1-4775-A3B5-E0FC5232633C}.Release|Any CPU.Build.0 = Release|Any CPU
-		{AC451915-9486-479B-BF14-D913328A8ACE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{AC451915-9486-479B-BF14-D913328A8ACE}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{AC451915-9486-479B-BF14-D913328A8ACE}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{AC451915-9486-479B-BF14-D913328A8ACE}.Release|Any CPU.Build.0 = Release|Any CPU
 		{0C0ED5AF-3410-405C-A6B9-D190DF75A476}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{0C0ED5AF-3410-405C-A6B9-D190DF75A476}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{0C0ED5AF-3410-405C-A6B9-D190DF75A476}.Release|Any CPU.ActiveCfg = Release|Any CPU

@@ -1,5 +1,4 @@
-﻿using _401Project.DataTransferObjects;
-using _401Project.Models;
+﻿using _401Project.Models;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
