@@ -77,6 +77,7 @@ namespace _401Project.Controllers
         {
             string requestString = "https://localhost:44332/api/query/getcommentsbypost?PostId=" + Id.ToString();
             List<Comment> comments = null;
+			bool commentsLoaded = true;
 
             PostInspectViewModel Model = new PostInspectViewModel
             {
@@ -97,7 +98,7 @@ namespace _401Project.Controllers
                     }
                     catch (Exception e)
                     {
-
+						commentsLoaded = false;
                     }
 
                 });
@@ -106,10 +107,11 @@ namespace _401Project.Controllers
             }
             catch(Exception e)
             {
-
+				commentsLoaded = false;
             }
 
             Model.Comments = comments;
+			Model.CommentsLoaded = commentsLoaded;
 
             return View(Model);
         }
