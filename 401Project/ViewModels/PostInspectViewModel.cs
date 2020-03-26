@@ -19,6 +19,7 @@ namespace _401Project.ViewModels
 		/**
 		 * Post Data
 		 */
+		public Guid CommentEditedId { get; set; }
 		public Guid CommentRepliedToId { get; set; }
 		public string CurrentUserName { get; set; }
 		public string NewCommentContent { get; set; }
