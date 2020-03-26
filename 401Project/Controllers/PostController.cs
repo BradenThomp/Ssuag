@@ -11,6 +11,10 @@ using Microsoft.AspNetCore.Authorization;
 using System.Security.Claims;
 using _401Project.Helpers.DataStructures;
 using _401Project.Models.Repository;
+using System.Net.Http;
+using Newtonsoft.Json;
+using System.Text;
+using Comment_Microservice.DataTransferObjects;
 
 // For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
 
@@ -69,12 +73,46 @@ namespace _401Project.Controllers
         /// <summary>
         /// Returns an inspected view of a post where Id is the post to inspect -- This can also be refered to as the page that contains comments.
         /// </summary>
-        public IActionResult Inspect(int Id)
+        public IActionResult Inspect(Guid Id)
         {
+            string requestString = "https://localhost:44332/api/query/getcommentsbypost?PostId=" + Id.ToString();
+            List<Comment> comments = null;
+			bool commentsLoaded = true;
+
             PostInspectViewModel Model = new PostInspectViewModel
             {
                 Post = PostRepository.ReadPost(Id)
             };
+
+            try
+            {
+                var client = new HttpClient();
+                var task = client.GetAsync(requestString).ContinueWith((taskwithresponse) =>
+                {
+                    try
+                    {
+                        var response = taskwithresponse.Result;
+                        var jsonString = response.Content.ReadAsStringAsync();
+                        jsonString.Wait();
+                        comments = JsonConvert.DeserializeObject<List<Comment>>(jsonString.Result);
+                    }
+                    catch (Exception e)
+                    {
+						commentsLoaded = false;
+                    }
+
+                });
+
+                task.Wait();
+            }
+            catch(Exception e)
+            {
+				commentsLoaded = false;
+            }
+
+            Model.Comments = comments;
+			Model.CommentsLoaded = commentsLoaded;
+
             return View(Model);
         }
 
@@ -107,14 +145,11 @@ namespace _401Project.Controllers
                     model.Photo.CopyTo(new FileStream(filePath, FileMode.Create));
                 }
 
-                //Gets current user username
-                var claimsIdentity = (ClaimsIdentity)this.User.Identity;
-                var userName = claimsIdentity.FindFirst(System.Security.Claims.ClaimTypes.Name);
-
                 Post newPost = new Post
                 {
+                    Id = Guid.NewGuid(),
                     PhotoPath = uniqueFileName,
-                    UserName = userName.ToString(),
+                    UserName = model.UserName,
                     TimePosted = DateTime.UtcNow,
                     Tags = new List<Tag>()
                 };
@@ -132,6 +167,79 @@ namespace _401Project.Controllers
             }
 
             return View();
+        }
+
+        /// <summary>
+        /// Takes user input from postnspectviewmodel to create a new CreateCommentDto which is then sent to the microservice
+        /// </summary>
+        [HttpPost]
+        [Authorize]
+        public async Task<IActionResult> PostComment(PostInspectViewModel vm)
+        {
+
+
+            CreateCommentDto comment = new CreateCommentDto
+            {
+                Content = vm.NewCommentContent,
+                PostId = vm.Post.Id,
+                Username = vm.CurrentUserName
+            };
+
+            try
+            {
+                using (var httpClient = new HttpClient())
+                {
+                    StringContent content = new StringContent(JsonConvert.SerializeObject(comment), Encoding.UTF8, "application/json");
+
+                    using (var response = await httpClient.PostAsync("https://localhost:44332/api/command/createcomment", content))
+                    {
+
+                    }
+                }
+            }
+            catch (Exception exception)
+            {
+                Console.WriteLine(exception);
+                //TODO ADD ERROR HERE
+                return RedirectToAction("inspect", new { id = vm.Post.Id });
+            }
+            return RedirectToAction("inspect", new { id = vm.Post.Id });
+        }
+
+        /// <summary>
+        /// Takes user input from postnspectviewmodel to create a new ReplyToCommentDto which is then sent to the microservice
+        /// </summary>
+        [HttpPost]
+        [Authorize]
+        public async Task<IActionResult> ReplyToComment(PostInspectViewModel vm)
+        {
+            ReplyToCommentDto comment = new ReplyToCommentDto
+            {
+                ParentId = vm.CommentRepliedToId,
+                Content = vm.NewCommentContent,
+                PostId = vm.Post.Id,
+                Username = vm.CurrentUserName
+            };
+
+            try
+            {
+                using (var httpClient = new HttpClient())
+                {
+                    StringContent content = new StringContent(JsonConvert.SerializeObject(comment), Encoding.UTF8, "application/json");
+
+                    using (var response = await httpClient.PostAsync("https://localhost:44332/api/command/replytocomment", content))
+                    {
+
+                    }
+                }
+            }
+            catch (Exception exception)
+            {
+                Console.WriteLine(exception);
+                //TODO ADD ERROR HERE
+                return RedirectToAction("inspect", new { id = vm.Post.Id });
+            }
+            return RedirectToAction("inspect", new { id = vm.Post.Id });
         }
     }
 }

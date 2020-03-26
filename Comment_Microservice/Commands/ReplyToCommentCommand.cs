@@ -24,5 +24,25 @@ namespace Comment_Microservice.Commands
         public string Username { get; set; }
 
         public DateTime TimeOfCreation { get; set; }
+
+        public ReplyToCommentCommand(string content, string username, Guid postId, Guid parentId)
+        {
+            ParentId = parentId;
+            PostId = postId;
+            Content = content;
+            Username = username;
+            GenerateCreationTime();
+            GenerateId();
+        }
+
+        private void GenerateId()
+        {
+            CommentId = Guid.NewGuid();
+        }
+
+        private void GenerateCreationTime()
+        {
+            TimeOfCreation = DateTime.UtcNow;
+        }
     }
 }

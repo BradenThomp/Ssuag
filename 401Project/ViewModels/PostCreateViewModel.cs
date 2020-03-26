@@ -15,6 +15,8 @@ namespace _401Project.ViewModels
         [AllowedExtensions(new string[] { ".jpg", ".png" })]
         public IFormFile Photo { get; set; }
 
+        public string UserName { get; set; }
+
         public List<Tag> Tags { get; set; }
 
         public PostCreateViewModel()

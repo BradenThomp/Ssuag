@@ -20,7 +20,7 @@ namespace Comment_Microservice.Commands.Handlers
              * Lambda expressions dynamically create methods, which are assigned to the parameterized command
              * Consider the Register methods as separate from the lambda expressions.
              */
-            Register<CreateComment>(async c =>
+            Register<CreateCommentCommand>(async c =>
             {
                 //code executes when a CreateComment Command is dispatched
                 //Creates a new comment aggregate (which creates a new Event in its ctor)
@@ -39,17 +39,19 @@ namespace Comment_Microservice.Commands.Handlers
                 }
             );
 
-            Register<EditComment>(async c =>
+            Register<EditCommentCommand>(async c =>
             {
                 //code executes when a EditComment Command is dispatched
                 //Pulls a copy of the comment from the repository, applies the new content to it and
                 //sends it to the repository which pushes new events to EventStore
                 var comment = await repository.Get<CommentAggregate>(c.CommentId);
+                Console.WriteLine("CommentID:");
+                Console.WriteLine(c.CommentId);
                 comment.EditComment(c.Content);
                 await repository.Save(comment);
             });
 
-            Register<DeleteComment>(async c =>
+            Register<DeleteCommentCommand>(async c =>
             {
                 //code executes when a DeleteComment Command is dispatched
                 //Pulls a copy of the comment from the repository, changes the delete flag to true and

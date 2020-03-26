@@ -9,6 +9,7 @@ using Comment_Microservice.Events;
 using Comment_Microservice.Commands.Handlers;
 using EventStore.ClientAPI;
 using Microsoft.AspNetCore.Mvc;
+using Comment_Microservice.DataTransferObjects;
 
 // For more information on enabling Web API for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
 
@@ -21,24 +22,11 @@ namespace Comment_Microservice.Controllers
         private readonly Dispatcher _dispatcher;
 
         /**
-         * On creation opens up a connection to an EventStore Database
+         *
          */
-        public CommandController()
+        public CommandController(Dispatcher dispatcher)
         {
-            var eventStoreConnection = EventStoreConnection.Create(ConnectionSettings.Default, new IPEndPoint(IPAddress.Loopback,1113));
-
-            eventStoreConnection.ConnectAsync();
-
-            //injects the connection into an AggregateRepository
-            var repository = new AggregateRepository(eventStoreConnection);
-
-            CommentCommandHandler[] commands = { new CommentCommandHandler(repository) };
-
-            //inject AggregateRepository into a CommentHandlers(event handler) then map all comment commands
-            var commandHandlerMap = new CommandHandlerMap(commands);
-
-            //inject mapped commands into dispatcher
-            _dispatcher = new Dispatcher(commandHandlerMap);
+            _dispatcher = dispatcher;
         }
 
         /**
@@ -47,21 +35,46 @@ namespace Comment_Microservice.Controllers
          * When a create comment command is recieved - dispatches the command 
          */
         [HttpPost]
-        public async Task CreateComment([FromBody] CreateComment createComment) 
+        public async Task CreateComment([FromBody] CreateCommentDto data) 
         {
-
             //dispatches a new CreateComment Command
-            await _dispatcher.Dispatch(createComment);
-
+            CreateCommentCommand command = new CreateCommentCommand(data.Content, data.Username, data.PostId);
+            await _dispatcher.Dispatch(command);
         }
 
+        /**
+         * Route is api/command/replytocommment
+         * 
+         * When a create comment command is recieved - dispatches the command 
+         */
         [HttpPost]
-        public async Task ReplyToComment([FromBody] ReplyToCommentCommand replyToCommentCommand)
+        public async Task ReplyToComment([FromBody] ReplyToCommentDto data)
         {
-            await _dispatcher.Dispatch(replyToCommentCommand);
+            ReplyToCommentCommand command = new ReplyToCommentCommand(data.Content, data.Username, data.PostId, data.ParentId);
+            await _dispatcher.Dispatch(command);
         }
 
+        /**
+         * Route is api/command/editcomment
+         * 
+         * When a create comment command is recieved - dispatches the command 
+         */
+        [HttpPost]
+        public async Task EditComment([FromBody] EditCommentDto data)
+        {
+            await _dispatcher.Dispatch(new EditCommentCommand(data.CommentId, data.Content));
+        }
 
+        /**
+         * Route is api/command/deletecomment
+         * 
+         * When a create comment command is recieved - dispatches the command 
+         */
+        [HttpPost]
+        public async Task DeleteComment([FromBody] DeleteCommentDto data)
+        {
+            await _dispatcher.Dispatch(new DeleteCommentCommand(data.CommentId));
+        }
 
     }
 }

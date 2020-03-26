@@ -8,12 +8,12 @@ namespace _401Project.Models.Repository
     public interface IPostRepository
     {
         public Post Create(Post post);
-        Post ReadPost(int Id);
+        Post ReadPost(Guid Id);
 
         public IQueryable<Post> ReadAllPosts();
 
         public Post Update(Post changedPost);
 
-        public Post Delete(int Id);
+        public Post Delete(Guid Id);
     }
 }
