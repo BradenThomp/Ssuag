@@ -140,7 +140,7 @@ namespace _401Project.Controllers
                 if (model.Photo != null)
                 {
                     string uploadsFolder = Path.Combine(HostingEnvironment.WebRootPath, "img/uploads");
-                    uniqueFileName = Guid.NewGuid().ToString() + "_" + model.Photo.FileName;
+                    uniqueFileName = Guid.NewGuid().ToString();
                     string filePath = Path.Combine(uploadsFolder, uniqueFileName);
                     model.Photo.CopyTo(new FileStream(filePath, FileMode.Create));
                 }

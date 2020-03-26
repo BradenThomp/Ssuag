@@ -22,11 +22,12 @@
 
 
         <div class="form-group row">
-            <label asp-for="@Model.Tags"></label>
+            <label asp-for="@Model.Tags" class="col-sm-2 col-form-label" ></label>
             @for (int i = 0; i < 5; i++)
             {
                 <input asp-for="@Model.Tags[i].TagContent" class="form-control" />
             }
+        <text>Tags are used to search for related memes, be sure to be fairly general so that others can find your meme</text>
         </div>
 
         <button type="submit" class="btn btn-outline-secondary">Post</button>
