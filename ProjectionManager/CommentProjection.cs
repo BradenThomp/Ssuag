@@ -47,13 +47,13 @@ namespace ProjectionManager
                 Console.WriteLine($"Comment {e.CommentId} replied to comment {e.ParentId}");
             });
 
-            /**When<CommentDeletedEvent>(e =>
+            When<CommentDeletedEvent>(e =>
             {
                 using (var session = dbConnection.Connect())
                 {
                     var comment = session.Load<Comment>(e.CommentId.ToString());
 
-                    comment.Deleted = true;
+                    session.Delete(comment);
 
                     session.SaveChanges();
                 }
@@ -68,12 +68,10 @@ namespace ProjectionManager
 
                     comment.Content = e.Content;
 
-                    comment.TimesEdited++;
-
                     session.SaveChanges();
                 }
                 Console.WriteLine($"Comment edited: {e.CommentId}");
-            });*/
+            });
         }
     }
 }
