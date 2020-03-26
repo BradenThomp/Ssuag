@@ -10,4 +10,9 @@
     <PackageReference Include="RavenDB.Client" Version="4.2.101" />
   </ItemGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\401Project\MVC.csproj" />
+    <ProjectReference Include="..\Comment_Microservice\Comment_Microservice.csproj" />
+  </ItemGroup>
+
 </Project>

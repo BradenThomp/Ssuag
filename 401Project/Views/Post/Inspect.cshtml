@@ -10,9 +10,13 @@
 <!--
     Render Post Image
 -->
-<p>Posted by @Model.Post.UserName - @Model.Post.TimePosted</p>
+<div style="background-color:lightgrey; margin-top:10px; padding-bottom:10px; padding-left:10px; padding-right:10px; border-top-left-radius: 25px; border-top-right-radius: 25px;">
+	<div style="max-width:700px; padding-top:10px; margin-left:auto; margin-right:auto; display:block;">
+		<p>Posted by @Model.Post.UserName - @Model.Post.TimePosted</p>
 
-<img class="card-img-top" src=@photoPath asp-append-version="true" />
+		<img class="card-img-top" src=@photoPath asp-append-version="true" />
+	</div>
+</div>
 
 @if(Model.CommentsLoaded)
 {
@@ -21,7 +25,7 @@
 	<!--
 		Render Form for creating new comment
 	-->
-	<form asp-action="PostComment" method="post">
+	<form asp-controller="Comment" asp-action="PostComment" method="post">
 		<input type="hidden" name="Post.Id" value=@Model.Post.Id />
 		@{
 			try
@@ -48,48 +52,44 @@
 	-->
 
 	@functions {
-		async Task Render(Comment parent, int depth)
-		{
-			string bgcolor = "";
-			string leftmargin = "";
-			if (depth % 2 == 1)
-			{
-				bgcolor = "White";
-			}
-			else
-			{
-				bgcolor = "LightGrey";
-			}
+        async Task Render(Comment parent, int depth)
+        {
+            string bgcolor = "";
+            string leftmargin = "";
+            if (depth % 2 == 1)
+            {
+                bgcolor = "White";
+            }
+            else
+            {
+                bgcolor = "LightGrey";
+            }
 
-			if (depth == 0)
-			{
-				leftmargin = "0px";
-			}
-			else
-			{
-				leftmargin = "40px";
-			}
+            if (depth == 0)
+            {
+                leftmargin = "0px";
+            }
+            else
+            {
+                leftmargin = "40px";
+            }
 			<div style="margin-left:@(leftmargin); background-color:@(bgcolor); padding-bottom: 10px; padding-top: 10px; margin-top: 10px; margin-bottom: 10px;">
 				<p style="margin-left:40px; margin-bottom: 5px; padding-bottom: 0px; color: #808080;">@parent.UserName</p>
-				<p style="margin-left:40px; margin-bottom: 5px; padding-bottom: 0px;">@parent.Content</p>
+				<p style="margin-left:40px; margin-right:40px; margin-bottom: 5px; padding-bottom: 0px;">@parent.Content</p>
 				<!--
 					Drop Down Menu for replying to comments
 				-->
-				<div class="dropdown">
-					<a style="margin-left:40px;  margin-bottom: 5px; padding-bottom: 0px;" class="dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown">Reply<span class="caret"></span></a>
+				<div class="dropdown" style="display:inline-block;">
+					<a style="margin-left:40px;  margin-bottom: 5px; padding-bottom: 0px;  display:inline-block;" class="dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown">Reply<span class="caret"></span></a>
 					<div class="dropdown-menu">
-						<form class="px-4 py-3" asp-action="ReplyToComment" method="post">
+						<form class="px-4 py-3" style="width:400px;" asp-controller="Comment" asp-action="ReplyToComment" method="post">
 							<input type="hidden" name="Post.Id" value=@Model.Post.Id />
 							@{
-								try
-								{
-									var user = await userManager.GetUserAsync(User);
-									<input type="hidden" name="CurrentUserName" value=@user.UserName />
-								}
-								catch (Exception e)
-								{
-
-								}
+                                var replyUser = await userManager.GetUserAsync(User);
+                                if (replyUser != null)
+                                {
+									<input type="hidden" name="CurrentUserName" value=@replyUser.UserName />
+                                }
 							}
 							<div class="form-group text-center">
 								<div class="input-group">
@@ -103,6 +103,53 @@
 						</form>
 					</div>
 				</div>
+				<!--
+					Drop Down Menu for Editing comments
+				-->
+				@{
+                    var editUser = await userManager.GetUserAsync(User);
+                    if (editUser != null)
+                    {
+                        if (editUser.ToString().Equals(parent.UserName))
+                        {   
+							<div class="dropdown" style="display:inline-block;">
+								<a style="margin-left:10px;  margin-bottom: 5px; padding-bottom: 0px;  display:inline-block;" class="dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown">Edit<span class="caret"></span></a>
+								<div class="dropdown-menu">
+									<form class="px-4 py-3" style="width:400px;" asp-controller="Comment" asp-action="EditComment" method="post">
+										<input type="hidden" name="Post.Id" value=@Model.Post.Id />
+										<div class="form-group text-center">
+											<div class="input-group">
+												<input value="@parent.Content" class="form-control" name="NewCommentContent" required />
+												<input type="hidden" name="CommentEditedId" value=@parent.Id />
+											</div>
+											<div class="dropdown-divider"></div>
+											<button type="submit" class="btn btn-outline-secondary text-center">Edit Comment</button>
+											<span asp-validation-for="NewCommentContent" class="text-danger"></span>
+										</div>
+									</form>
+								</div>
+							</div>
+						}
+                    }
+                }
+				<!--
+					Deleting Comments
+				-->
+				@{
+
+					var user = await userManager.GetUserAsync(User);
+					if (user != null)
+					{
+
+						if (user.ToString().Equals(parent.UserName))
+						{
+							<form style="margin:0; margin-left:10px; padding:0; display:inline-block;" asp-controller="Comment" asp-action="DeleteComment" asp-route-id=@parent.Id method="post">
+								<button type="submit" class="btn btn-link" style="margin:0; padding:0;  display:inline-block;">Delete</button>
+							</form>
+						}
+					}
+				}
+
 				<!--
 					Render Children
 				-->

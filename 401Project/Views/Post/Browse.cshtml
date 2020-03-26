@@ -4,7 +4,7 @@
     ViewData["Title"] = "Post Index Page";
 }
 
-    <div class="dropdown" style="margin-bottom: 75px;">
+    <div class="dropdown">
         <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
             Sort By
         </button>
@@ -14,17 +14,20 @@
         </div>
     </div>
 
-    <div class="text-center m-0 p-0">
+    <div class="m-0 p-0" style="text-align:center">
 
+        <div style="max-width:700px; margin:0 auto; display:block;">
         @foreach (var item in Model)
         {
             var photoPath = "~/img/uploads/" + item.PhotoPath;
 
 
-            <a class="nav-link text-dark m-0 p-0" asp-area="" asp-controller="Post" asp-action="Inspect" asp-route-id="@item.Id">
+            <a class="nav-link text-dark m-0 p-0 text-center" asp-area="" asp-controller="Post" asp-action="Inspect" asp-route-id="@item.Id">
                 <img class="m-0 p-0" style="width:100%;" src=@photoPath asp-append-version="true" />
             </a>
         }
+
+        </div>
 
         @{
             var prevDisabled = !Model.HasPreviousPage ? "disabled" : "";

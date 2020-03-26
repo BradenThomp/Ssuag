@@ -1,5 +1,4 @@
-﻿using _401Project.DataTransferObjects;
-using _401Project.Models;
+﻿using _401Project.Models;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
@@ -20,6 +19,7 @@ namespace _401Project.ViewModels
 		/**
 		 * Post Data
 		 */
+		public Guid CommentEditedId { get; set; }
 		public Guid CommentRepliedToId { get; set; }
 		public string CurrentUserName { get; set; }
 		public string NewCommentContent { get; set; }
