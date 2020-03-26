@@ -84,7 +84,7 @@ namespace _401Project.Controllers
         public async Task<IActionResult> Login(LoginViewModel model, string returnUrl = null)
         {
             ViewData["ReturnUrl"] = returnUrl;
-            if(model.UserName.IndexOf('@') > -1)    //Check if valid email
+            if(model.UserName.IndexOf('@') > -1)    //If @ used checks for valid email characters
             {
                 string emailRegex = @"^([a-zA-Z0-9_\-\.]+)@((\[[0-9]{1,3}" +
                                @"\.[0-9]{1,3}\.[0-9]{1,3}\.)|(([a-zA-Z0-9\-]+\" +
@@ -95,20 +95,13 @@ namespace _401Project.Controllers
                     ModelState.AddModelError("UserName", "Email is not valid");
                 }
             }
-            else                                    //Check if valid username
-            {
-                string emailRegex = @"^[a-zA-Z0-9]*$";
-                Regex re = new Regex(emailRegex);
-                if (!re.IsMatch(model.UserName))
-                {
-                    ModelState.AddModelError("UserName", "Username is not valid");
-                }
-            }
             if (ModelState.IsValid)
             {
                 var userName = model.UserName;
+                //If username is entered as an email, find the username associated with the email
                 if(userName.IndexOf('@') > -1)
                 {
+                    //Finds username associated with email
                     var user = await UserManager.FindByEmailAsync(model.UserName);
                     if(user == null)
                     {
