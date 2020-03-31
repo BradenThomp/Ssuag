@@ -5,7 +5,7 @@
     var user = await userManager.GetUserAsync(User);
 }
 
-<div class="text-center">
+    <div class="text-center">
         @if (signInManager.IsSignedIn(User))
         {
             <h1>Welcome @user.UserName</h1>
@@ -14,10 +14,10 @@
         {
             <h1 class="display-4">Welcome To Ssuag</h1>
         }
-    <div id="canvas">
+        <div id="canvas">
 
+        </div>
     </div>
-</div>
 
 @section Scripts{
     <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/110/three.js"></script>

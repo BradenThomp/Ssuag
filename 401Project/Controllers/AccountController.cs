@@ -83,49 +83,52 @@ namespace _401Project.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Login(LoginViewModel model, string returnUrl = null)
         {
-            ViewData["ReturnUrl"] = returnUrl;
-            if(model.UserName.IndexOf('@') > -1)    //If @ used checks for valid email characters
-            {
-                string emailRegex = @"^([a-zA-Z0-9_\-\.]+)@((\[[0-9]{1,3}" +
-                               @"\.[0-9]{1,3}\.[0-9]{1,3}\.)|(([a-zA-Z0-9\-]+\" +
-                                  @".)+))([a-zA-Z]{2,4}|[0-9]{1,3})(\]?)$";
-                Regex re = new Regex(emailRegex);
-                if (!re.IsMatch(model.UserName))
-                {
-                    ModelState.AddModelError("UserName", "Email is not valid");
-                }
-            }
             if (ModelState.IsValid)
             {
-                var userName = model.UserName;
-                //If username is entered as an email, find the username associated with the email
-                if(userName.IndexOf('@') > -1)
+                ViewData["ReturnUrl"] = returnUrl;
+                if (model.UserName.IndexOf('@') > -1)    //If @ used checks for valid email characters
                 {
-                    //Finds username associated with email
-                    var user = await UserManager.FindByEmailAsync(model.UserName);
-                    if(user == null)
+                    string emailRegex = @"^([a-zA-Z0-9_\-\.]+)@((\[[0-9]{1,3}" +
+                                   @"\.[0-9]{1,3}\.[0-9]{1,3}\.)|(([a-zA-Z0-9\-]+\" +
+                                      @".)+))([a-zA-Z]{2,4}|[0-9]{1,3})(\]?)$";
+                    Regex re = new Regex(emailRegex);
+                    if (!re.IsMatch(model.UserName))
                     {
-                        ModelState.AddModelError(string.Empty, "Invalid Login Attempt.");
-                        return View(model);
-                    }
-                    else
-                    {
-                        userName = user.UserName;
+                        ModelState.AddModelError("UserName", "Email is not valid");
                     }
                 }
-                var result = await SignInManager.PasswordSignInAsync(userName, model.Password, model.RememberMe, lockoutOnFailure: false);
-                if (result.Succeeded)
+                if (ModelState.IsValid)
                 {
-                    if (!string.IsNullOrEmpty(returnUrl))
+                    var userName = model.UserName;
+                    //If username is entered as an email, find the username associated with the email
+                    if (userName.IndexOf('@') > -1)
                     {
-                        return Redirect(returnUrl);
+                        //Finds username associated with email
+                        var user = await UserManager.FindByEmailAsync(model.UserName);
+                        if (user == null)
+                        {
+                            ModelState.AddModelError(string.Empty, "Invalid Login Attempt.");
+                            return View(model);
+                        }
+                        else
+                        {
+                            userName = user.UserName;
+                        }
                     }
-                    else
+                    var result = await SignInManager.PasswordSignInAsync(userName, model.Password, model.RememberMe, lockoutOnFailure: false);
+                    if (result.Succeeded)
                     {
-                        return RedirectToAction("index", "home");
+                        if (!string.IsNullOrEmpty(returnUrl))
+                        {
+                            return Redirect(returnUrl);
+                        }
+                        else
+                        {
+                            return RedirectToAction("index", "home");
+                        }
                     }
+                    ModelState.AddModelError(string.Empty, "Invalid Login Attempt.");
                 }
-                ModelState.AddModelError(string.Empty, "Invalid Login Attempt.");
             }
             return View(model);
         }
