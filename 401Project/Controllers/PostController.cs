@@ -41,9 +41,21 @@ namespace _401Project.Controllers
         /// <summary>
         /// Returns a paginated list view of posts. pageSize is the number of posts to include per page.
         /// </summary>
-        public async Task<IActionResult> Browse(string sortOrder, string search, int? pageNumber)
+        public async Task<IActionResult> Browse(string sortOrder, string search, int? pageNumber, string currentFilter)
         {
             var posts = PostRepository.ReadAllPosts();
+
+            ViewData["CurrentSort"] = sortOrder;
+            ViewData["DateSortParm"] = sortOrder == "date" ? "date_desc" : "date";
+
+            if (search != null)
+            {
+                pageNumber = 1;
+            }
+            else
+            {
+                search = currentFilter;
+            }
 
             ViewData["TagFilter"] = search;
 
@@ -66,7 +78,7 @@ namespace _401Project.Controllers
                     break;
             }
 
-            int pageSize = 20;
+            int pageSize = 5;
             return View(await PaginatedList<Post>.CreateAsync(posts, pageNumber ?? 1, pageSize));
         }
 

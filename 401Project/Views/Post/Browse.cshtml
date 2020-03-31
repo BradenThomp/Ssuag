@@ -9,8 +9,8 @@
             Sort By
         </button>
         <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-            <a class="dropdown-item" asp-action="Browse" asp-route-sortOrder="date_desc">Newest First</a>
-            <a class="dropdown-item" asp-action="Browse" asp-route-sortOrder="date">Oldest First</a>
+            <a class="dropdown-item" asp-action="Browse" asp-route-sortOrder="date_desc" asp-route-currentFilter="@ViewData["TagFilter"]">Newest First</a>
+            <a class="dropdown-item" asp-action="Browse" asp-route-sortOrder="date" asp-route-currentFilter="@ViewData["TagFilter"]">Oldest First</a>
         </div>
     </div>
 
@@ -36,13 +36,17 @@
             var nextDisabled = !Model.HasNextPage ? "disabled" : "";
         }
 
-        <a asp-action="Index"
+        <a asp-action="Browse"
+           asp-route-sortOrder="@ViewData["CurrentSort"]"
            asp-route-pageNumber="@(Model.PageIndex - 1)"
+           asp-route-currentFilter="@ViewData["TagFilter"]"
            class="btn btn-default @prevDisabled">
             Previous
         </a>
-        <a asp-action="Index"
+        <a asp-action="Browse"
+           asp-route-sortOrder="@ViewData["CurrentSort"]"
            asp-route-pageNumber="@(Model.PageIndex + 1)"
+           asp-route-currentFilter="@ViewData["TagFilter"]"
            class="btn btn-default @nextDisabled">
             Next
         </a>
