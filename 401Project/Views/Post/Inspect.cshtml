@@ -10,13 +10,11 @@
 <!--
     Render Post Image
 -->
-<div style="background-color:lightgrey; margin-top:10px; padding-bottom:10px; padding-left:10px; padding-right:10px; border-top-left-radius: 25px; border-top-right-radius: 25px;">
-	<div style="max-width:700px; padding-top:10px; margin-left:auto; margin-right:auto; display:block;">
-		<p>Posted by @Model.Post.UserName - @Model.Post.TimePosted</p>
-
-		<img class="card-img-top" src=@photoPath asp-append-version="true" />
-	</div>
+<p style="color:black;">Posted by @Model.Post.UserName - @Model.Post.TimePosted</p>
+<div style="max-width:700px; padding-top:10px; margin-left:auto; margin-right:auto; display:block;">
+	<img class="card-img-top" src=@photoPath asp-append-version="true" />
 </div>
+
 
 @if(Model.CommentsLoaded)
 {
@@ -184,5 +182,5 @@
 }
 else
 {
-	<p>Comments could not be loaded. To view comments, please try again later.</p>
+	<p style="margin-top:40px";>Sorry, the comment service is currently undergoing maintainence. To view comments, please try again later.</p>
 }
