@@ -78,7 +78,7 @@ namespace _401Project.Controllers
                     break;
             }
 
-            int pageSize = 5;
+            int pageSize = 20;
             return View(await PaginatedList<Post>.CreateAsync(posts, pageNumber ?? 1, pageSize));
         }
 
