@@ -2,6 +2,8 @@
 
 Suagg is a cloud based web service for uploading and viewing memes.  The architecture of this project consists of an MVC Application, Comment Microservice and Projection Manager.
 
+[![IMAGE ALT TEXT HERE](https://img.youtube.com/vi/sOicMZzA3E8/0.jpg)](https://www.youtube.com/watch?v=sOicMZzA3E8)
+
 ## MVC Application
 
 HTML pages are rendered server side using an MVC architectural pattern.  The MVC application is responsible for Post and User data which is stored in an SQL database.  Entity framework core was used for all database access with Identity Framework Core managing the user information.  Data relating to a post's comments is either commanded or queried through the Comment Microservice.  This is done through REST api calls to the microservice.
