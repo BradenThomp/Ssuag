@@ -31,7 +31,7 @@ git clone https://github.com/BradenThomp/Ssuag.git
 ```
 
 ## Usage
-Run Microservice, Projection Manager, and MVC through visual studio.
+Run the comment microservice, projection manager, and MVC application through visual studio.  Each project can be run independently.
 
 ## Resources
 N/A
