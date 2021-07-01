@@ -31,7 +31,7 @@ git clone https://github.com/BradenThomp/Ssuag.git
 ```
 
 ## Usage
-1. Run Microservice, Projection Manager, and MVC through visual studio.
+Run Microservice, Projection Manager, and MVC through visual studio.
 
 ## Resources
 N/A
