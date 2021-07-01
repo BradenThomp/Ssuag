@@ -37,9 +37,9 @@ Run Microservice, Projection Manager, and MVC through visual studio.
 N/A
 
 ## Contributors
-Braden Thompson
-Nathan Sehn
-Quinn Ceplis
-Eddy Gu
-Hunter Reboul
-Ethan Schafers
+* Braden Thompson
+* Nathan Sehn
+* Quinn Ceplis
+* Eddy Gu
+* Hunter Reboul
+* Ethan Schafers
