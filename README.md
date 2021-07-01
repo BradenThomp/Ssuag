@@ -22,8 +22,7 @@ The Projection Manager subscribes to the events that occur in the Comment Micros
 
 ## Getting Started
 ### Prerequisites
-Set up Event Store: https://eventstore.com/
-Set up RavenDB: https://ravendb.net/
+Install Event Store: https://eventstore.com/ and RavenDB: https://ravendb.net/
 
 ### Installation
 Clone the repo:
